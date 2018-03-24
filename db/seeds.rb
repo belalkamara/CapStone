@@ -12,7 +12,7 @@ puts "10 blog posts"
 3.times do |x|
   Activity.create!(
     title: "Week #{x}",
-    miles: "Run #{x} miles",
+    miles: "20",
     image: "http://via.placeholder.com/300x200"
   )
 end
