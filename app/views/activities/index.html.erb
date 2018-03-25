@@ -1,7 +1,10 @@
 <h1>Activity Page</h1>
 
+<%= link_to "Create New Event", new_activity_url %>
+
 <% @activity_events.each do |event| %>
   <p><%= event.title %></p>
   <p><%= event.miles %></p>
   <%= image_tag event.image unless event.image.nil? %>
+  <%= link_to "Edit", edit_activity_path(event.id) %>
 <% end %>
