@@ -1,0 +1,22 @@
+<h1>Create a Event</h1>
+
+<%= form_with(model: @activity_events, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :miles %>
+    <%= form.number_field :miles %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
