@@ -38,4 +38,8 @@ class ActivitiesController < ApplicationController
       end
     end
   end
+
+  def show
+    @activity_events = Activity.find(params[:id])
+  end
 end
