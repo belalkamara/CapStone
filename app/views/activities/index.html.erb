@@ -7,4 +7,5 @@
   <p><%= event.miles %></p>
   <%= image_tag event.image unless event.image.nil? %>
   <%= link_to "Edit", edit_activity_path(event) %>
+  <%= link_to 'Delete', activity_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

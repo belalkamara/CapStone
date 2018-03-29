@@ -42,4 +42,14 @@ class ActivitiesController < ApplicationController
   def show
     @activity_events = Activity.find(params[:id])
   end
+
+  def destroy
+    @activity_events = Activity.find(params[:id])
+
+    @activity_events.destroy
+    respond_to do |format|
+      format.html { redirect_to activities_url, notice: 'Activity was successfully Deleted.' }
+      format.json { head :no_content }
+    end
+  end 
 end
