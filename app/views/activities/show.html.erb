@@ -1,3 +1,12 @@
 <%= image_tag @activity_events.image unless @activity_events.image.nil? %>
 <h1><%= @activity_events.title %></h1>
 <p>Miles:<%= @activity_events.miles %></p>
+<p>Start Date:<%= @activity_events.created_at %></p>
+<p>Days Remaining:<%= @activity_events.days %></p>
+
+
+<!-- figure out how to format the date -->
+
+<!-- Have the Start date be the publish date -->
+
+<!-- And have the Days remaining got down to 0 then go to the ended state -->
