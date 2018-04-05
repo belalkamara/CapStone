@@ -5,6 +5,7 @@
 <% @activity_events.each do |event| %>
   <p><strong><%= link_to event.title, activity_show_path(event) %></strong></p>
   <p><%= event.miles %></p>
+  <p><%= link_to event.status, root_path %></p>
   <%= link_to "Edit", edit_activity_path(event) %>
   <%= link_to 'Delete', activity_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
