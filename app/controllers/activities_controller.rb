@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+
   def index
     @activity_events = Activity.all
   end
@@ -8,7 +9,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity_events = Activity.new(params.require(:activity).permit(:title, :miles, :image))
+    @activity_events = Activity.new(params.require(:activity).permit(:title, :miles, :image, :days))
 
     respond_to do |format|
       if @activity_events.save
@@ -29,7 +30,7 @@ class ActivitiesController < ApplicationController
     @activity_events = Activity.find(params[:id])
 
     respond_to do |format|
-      if @activity_events.update(params.require(:activity).permit(:title, :miles, :image))
+      if @activity_events.update(params.require(:activity).permit(:title, :miles, :image, :days))
         format.html { redirect_to activities_path, notice: 'Your activity was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_events }
       else
@@ -52,4 +53,20 @@ class ActivitiesController < ApplicationController
       format.json { head :no_content }
     end
   end 
+
+  def toggle_status
+    @activity_events = Activity.find(params[:id])
+
+    if @activity_events.draft?
+      @activity_events.published!
+    elsif @activity_events.published?
+      @activity_events.draft!
+    elsif @activity_events.days? == 0
+      @activity_events.ended! 
+    elsif @activity_events.ended?
+      @activity_events.draft!
+    end  
+      
+    redirect_to activities_url, notice: "Your activity status has been updated."
+  end
 end

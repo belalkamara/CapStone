@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :activities, except: [:show]
+  resources :activities, except: [:show] 
   get 'activity/:id', to: 'activities#show', as: "activity_show"
 
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
 
-  resources :blogs do
+  resources :blogs, :activities do
     member do
       get :toggle_status
     end
