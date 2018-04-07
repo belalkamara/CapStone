@@ -1,15 +1,11 @@
-<h1>Activity Page</h1>
+<h1>Draft Events</h1>
 
 <%= link_to "Create New Event", new_activity_url %>
 
-<% @activity_events.each do |event| %>
+<% @draft_events.each do |event| %>
   <p><strong><%= link_to event.title, activity_show_path(event) %></strong></p>
   <p>Miles for Event:<%= event.miles %></p>
   <p><%= link_to event.status, toggle_status_activity_path(event) %></p>
   <%= link_to "Edit", edit_activity_path(event) %>
   <%= link_to 'Delete', activity_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
-
-<!-- Add a Event start date
-How many Days for the event
-If this event is on going or if it is still waiting for the date -->

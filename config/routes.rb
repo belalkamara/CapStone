@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :activities, except: [:show] 
+  get 'draft-events', to: 'activities#draft'
   get 'activity/:id', to: 'activities#show', as: "activity_show"
 
   get 'about', to: 'pages#about'

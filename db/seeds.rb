@@ -1,20 +1,39 @@
+3.times do |topic|
+  Topic.create!(
+    title: "Topic #{topic}"
+  )
+end
+
+puts "3 Topics Created"
+
 10.times do |blog|
   Blog.create!(
     title: "Feet Pain #{blog}", 
     body: "UGH I HATE RUNNING", 
-    picture: "http://via.placeholder.com/400x300"
+    picture: "http://via.placeholder.com/400x300",
+    topic_id: Topic.last.id
   )
 end
 
 puts "10 blog posts"
 
 
-3.times do |x|
+6.times do |x|
   Activity.create!(
     title: "Week #{x}",
     miles: "20",
-    image: "http://via.placeholder.com/300x200"
+    image: "http://via.placeholder.com/300x200",
+    days: "3"
   )
 end
 
-puts "3 activities posts"
+1.times do |x|
+  Activity.create!(
+    title: "Week #{x}",
+    miles: "10",
+    image: "http://via.placeholder.com/300x200",
+    days: "1"
+  )
+end
+
+puts "7 activities posts"

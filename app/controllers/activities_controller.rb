@@ -4,6 +4,10 @@ class ActivitiesController < ApplicationController
     @activity_events = Activity.all
   end
 
+  def draft
+    @draft_events = Activity.draft
+  end
+
   def new
     @activity_events = Activity.new
   end
@@ -58,8 +62,8 @@ class ActivitiesController < ApplicationController
     @activity_events = Activity.find(params[:id])
 
     if @activity_events.draft?
-      @activity_events.published!
-    elsif @activity_events.published?
+      @activity_events.live!
+    elsif @activity_events.live?
       @activity_events.draft!
     elsif @activity_events.days? == 0
       @activity_events.ended! 
