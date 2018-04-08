@@ -1,4 +1,5 @@
 class Blog < ApplicationRecord
+  include ImagePlaceholder
   enum status: { draft: 0, published: 1 }
   extend FriendlyId
   friendly_id :title, use: :slugged
@@ -10,7 +11,7 @@ class Blog < ApplicationRecord
   after_initialize :set_defaults
 
   def set_defaults
-    self.picture ||= "http://via.placeholder.com/400x300"
+    self.picture ||= ImagePlaceholder.image_generator(height:'400', width:'300')
     self.topic_id ||= Topic.last.id
   end
 end

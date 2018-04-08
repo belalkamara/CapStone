@@ -1,5 +1,6 @@
 <%= image_tag @activity_events.image unless @activity_events.image.nil? %>
 <h1><%= @activity_events.title %></h1>
+<p>Description:<%= @activity_events.description %></p>
 <p>Miles:<%= @activity_events.miles %></p>
 <p>Start Date:<%= @activity_events.created_at %></p>
 <p>Days Remaining:<%= @activity_events.days %></p>

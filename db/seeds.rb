@@ -21,18 +21,20 @@ puts "10 blog posts"
 6.times do |x|
   Activity.create!(
     title: "Week #{x}",
-    miles: "20",
+    description: "We need to run 10000 miles in 100 days.",
+    miles: "10000",
     image: "http://via.placeholder.com/300x200",
-    days: "3"
+    days: "100"
   )
 end
 
 1.times do |x|
   Activity.create!(
     title: "Week #{x}",
-    miles: "10",
+    description: "We need to run 100 miles in 20 days.",
+    miles: "100",
     image: "http://via.placeholder.com/300x200",
-    days: "1"
+    days: "20"
   )
 end
 

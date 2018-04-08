@@ -4,6 +4,7 @@
 
 <% @activity_events.each do |event| %>
   <p><strong><%= link_to event.title, activity_show_path(event) %></strong></p>
+  <p>Description:<%= event.description %></p>
   <p>Miles for Event:<%= event.miles %></p>
   <p><%= link_to event.status, toggle_status_activity_path(event) %></p>
   <%= link_to "Edit", edit_activity_path(event) %>

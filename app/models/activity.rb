@@ -1,7 +1,8 @@
 class Activity < ApplicationRecord
+  include ImagePlaceholder
   enum status: { draft: 0, live: 1, ended: 2 }
 
-  validates_presence_of :title, :miles, :days, :image, :status
+  validates_presence_of :title, :miles, :days, :image, :status, :description
 
   def self.draft
     where(status: 'draft')
@@ -14,7 +15,7 @@ class Activity < ApplicationRecord
   after_initialize :set_defaults, :set_status
 
   def set_defaults
-    self.image ||= "http://via.placeholder.com/300x200"
+    self.image ||= ImagePlaceholder.image_generator(height:'300', width:'200')
   end
 
   def set_status
@@ -23,3 +24,6 @@ class Activity < ApplicationRecord
     end
   end
 end
+
+
+# Need to figure out better call for set status... How it is now it crashes every time you set a new event
