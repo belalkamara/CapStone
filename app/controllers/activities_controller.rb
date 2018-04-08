@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-
+  
   def index
     @activity_events = Activity.all
   end
@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
     @activity_events = Activity.find(params[:id])
 
     respond_to do |format|
-      if @activity_events.update(params.require(:activity).permit(:title, :miles, :image, :days))
+      if @activity_events.update(params.require(:activity).permit(:title, :miles, :image, :days, :status))
         format.html { redirect_to activities_path, notice: 'Your activity was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_events }
       else
@@ -65,11 +65,11 @@ class ActivitiesController < ApplicationController
       @activity_events.live!
     elsif @activity_events.live?
       @activity_events.draft!
-    elsif @activity_events.days? == 0
-      @activity_events.ended! 
-    elsif @activity_events.ended?
-      @activity_events.draft!
-    end  
+    end
+
+    if @activity_events.days.nil? || @activity_events.days == 0
+      @activity_events.ended!
+    end
       
     redirect_to activities_url, notice: "Your activity status has been updated."
   end
