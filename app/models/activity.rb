@@ -1,4 +1,6 @@
 class Activity < ApplicationRecord
+  has_many :types
+
   include ImagePlaceholder
   enum status: { draft: 0, live: 1, ended: 2 }
 

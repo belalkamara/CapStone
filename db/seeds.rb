@@ -39,3 +39,11 @@ end
 end
 
 puts "7 activities posts"
+
+1.times do |x|
+  Activity.last.types.create!(
+    name: "Type #{x}"
+  )
+end
+
+puts "1 Activity types created"
