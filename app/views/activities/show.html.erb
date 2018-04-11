@@ -5,6 +5,11 @@
 <p>Start Date:<%= @activity_events.created_at %></p>
 <p>Days Remaining:<%= @activity_events.days %></p>
 
+<H3>Event Type</H3>
+<% @activity_events.types.each do |x| %>
+<p><%= x.name %></p>
+<% end %>
+
 
 <!-- figure out how to format the date -->
 

@@ -1,5 +1,4 @@
 class ActivitiesController < ApplicationController
-  
   def index
     @activity_events = Activity.all
   end
@@ -10,10 +9,11 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity_events = Activity.new
+    1.times { @activity_events.types.build }
   end
 
   def create
-    @activity_events = Activity.new(params.require(:activity).permit(:title, :description, :miles, :image, :days))
+    @activity_events = Activity.new(params.require(:activity).permit(:title, :description, :miles, :image, :days, types_attributes: [:name]))
 
     respond_to do |format|
       if @activity_events.save

@@ -26,6 +26,15 @@
     <%= form.file_field :image %>
   </div>
 
+  <ul>
+    <%= form.fields_for :types do |x| %>
+    <li>
+      <%= x.label :name %>
+      <%= x.text_field :name %>
+    </li>
+    <% end %>
+  </ul>
+
   <div class="actions">
     <%= form.submit %>
   </div>
