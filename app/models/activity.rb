@@ -1,5 +1,7 @@
 class Activity < ApplicationRecord
   has_many :types
+  accepts_nested_attributes_for :types, 
+                                reject_if: lambda { |attr| attr['name'].blank? }
 
   include ImagePlaceholder
   enum status: { draft: 0, live: 1, ended: 2 }
