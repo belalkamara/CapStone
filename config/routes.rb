@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
   resources :activities, except: [:show] 
   get 'draft-events', to: 'activities#draft'
   get 'activity/:id', to: 'activities#show', as: "activity_show"
