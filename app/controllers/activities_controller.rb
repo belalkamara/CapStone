@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity_events = Activity.new(params.require(:activity).permit(:title, :description, :miles, :image, :days, types_attributes: [:name]))
+    @activity_events = Activity.new(activity_params)
 
     respond_to do |format|
       if @activity_events.save
@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
     @activity_events = Activity.find(params[:id])
 
     respond_to do |format|
-      if @activity_events.update(params.require(:activity).permit(:title, :description, :miles, :image, :days, :status))
+      if @activity_events.update(activity_params)
         format.html { redirect_to activities_path, notice: 'Your activity was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_events }
       else
@@ -72,5 +72,17 @@ class ActivitiesController < ApplicationController
     end
       
     redirect_to activities_url, notice: "Your activity status has been updated."
+  end
+
+  private
+
+  def activity_params
+    params.require(:activity).permit(:title, 
+                                     :description, 
+                                     :miles, 
+                                     :image, 
+                                     :days, 
+                                     types_attributes: [:name]
+                                     )
   end
 end
