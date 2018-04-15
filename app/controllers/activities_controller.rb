@@ -46,6 +46,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity_events = Activity.find(params[:id])
+    @page_title = @activity_events.title
   end
 
   def destroy
