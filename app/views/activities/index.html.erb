@@ -3,14 +3,17 @@
 <%= link_to "Create New Event", new_activity_url %>
 
 <% @activity_events.each do |event| %>
+  <p><%= image_tag event.image unless event.image.nil? %></p>
   <p><strong><%= link_to event.title, activity_show_path(event) %></strong></p>
-  <p>Description:<%= event.description %></p>
+  <p>Start Date:<%= event.start_date %></p>
   <p>Miles for Event:<%= event.miles %></p>
+  <p>This is a <%= event.days %> day event</p>
   <p><%= link_to event.status, toggle_status_activity_path(event) %></p>
   <%= link_to "Edit", edit_activity_path(event) %>
   <%= link_to 'Delete', activity_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <hr>
 <% end %>
+<hr>
 
-<!-- Add a Event start date
-How many Days for the event
-If this event is on going or if it is still waiting for the date -->
+<!-- Only show live events.... Remove the toggle status when in prod... 
+ALSO SHOW EVENT TYPE-->

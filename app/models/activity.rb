@@ -6,7 +6,7 @@ class Activity < ApplicationRecord
   include ImagePlaceholder
   enum status: { draft: 0, live: 1, ended: 2 }
 
-  validates_presence_of :title, :miles, :days, :image, :status, :description
+  validates_presence_of :title, :miles, :days, :image, :status, :description, :start_date, :end_date
 
   def self.draft
     where(status: 'draft')
@@ -27,6 +27,3 @@ class Activity < ApplicationRecord
     self.update_column(:status, 2) if self.days == 0
   end
 end
-
-
-# Need to figure out better call for set status... How it is now it crashes every time you set a new event

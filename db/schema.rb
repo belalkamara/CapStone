@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411174929) do
+ActiveRecord::Schema.define(version: 20180415170300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20180411174929) do
     t.integer "status", default: 0
     t.integer "days"
     t.text "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   create_table "blogs", force: :cascade do |t|

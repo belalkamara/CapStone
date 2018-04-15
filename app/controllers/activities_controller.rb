@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
     @activity_events = Activity.new(activity_params)
 
     respond_to do |format|
-      if @activity_events.save
+      if @activity_events.save!
         format.html { redirect_to activities_path, notice: 'Your event was successfully created.' }
         format.json { render :show, status: :created, location: @activity_events }
       else
@@ -82,7 +82,9 @@ class ActivitiesController < ApplicationController
                                      :description, 
                                      :miles, 
                                      :image, 
-                                     :days, 
+                                     :days,
+                                     :end_date,
+                                     :start_date, 
                                      types_attributes: [:name]
                                      )
   end

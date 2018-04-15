@@ -17,8 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :days %>
-    <%= form.number_field :days %>
+    <%= form.label :start_date %>
+    <%= form.datetime_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_field :end_date %>
   </div>
 
   <div class="field">
