@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  require 'date'
+  
   def index
     @activity_events = Activity.all
   end
@@ -47,6 +49,8 @@ class ActivitiesController < ApplicationController
   def show
     @activity_events = Activity.find(params[:id])
     @page_title = @activity_events.title
+    @event_days = @activity_events.event_days
+
   end
 
   def destroy
@@ -74,6 +78,20 @@ class ActivitiesController < ApplicationController
       
     redirect_to activities_url, notice: "Your activity status has been updated."
   end
+
+  # def event_days
+  #   Integer(Date.new(self.end_date) - (closer_to_end_date))
+  # end
+
+  # def closer_to_end_date
+  #   if Date.today >= Date.new(self.start_date)
+  #     Date.today
+  #   elsif Date.new(self.start_date) >= Date.today
+  #     Date.new(self.start_date)
+  #   end
+  # end
+
+  
 
   private
 

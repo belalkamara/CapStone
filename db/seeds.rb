@@ -1,3 +1,5 @@
+require 'date'
+
 3.times do |topic|
   Topic.create!(
     title: "Topic #{topic}"
@@ -24,7 +26,9 @@ puts "10 blog posts"
     description: "We need to run 10000 miles in 100 days.",
     miles: "10000",
     image: "http://via.placeholder.com/300x200",
-    days: "100"
+    start_date: Date.new(2018, 04, 17),
+    end_date: Date.new(2018, 04, 30)
+    
   )
 end
 
@@ -34,7 +38,9 @@ end
     description: "We need to run 100 miles in 20 days.",
     miles: "100",
     image: "http://via.placeholder.com/300x200",
-    days: "20"
+    start_date: Date.new(2018, 04, 15),
+    end_date: Date.new(2018, 04, 25)
+    
   )
 end
 
