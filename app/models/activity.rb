@@ -26,14 +26,14 @@ class Activity < ApplicationRecord
   end
 
   def event_days
-    Integer(Date.new(self.end_date) - (closer_to_end_date))
+    Integer(self.end_date - closer_to_end_date)
   end
 
   def closer_to_end_date
-    if Date.today >= Date.new(self.start_date)
+    if Date.today >= self.start_date
       Date.today
-    elsif Date.new(self.start_date) >= Date.today
-      Date.new(self.start_date)
+    elsif self.start_date >= Date.today
+      self.start_date
     end
   end
 end
