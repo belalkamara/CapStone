@@ -18,8 +18,14 @@ class Activity < ApplicationRecord
     where(status: 'live')
   end
 
+  def set_status
+     self.update_column(:status, 2) if self.days == 0
+
+     self.update_column(:status, 1) if Date.today >= self.start_date
+   end
+
   after_initialize :set_defaults
-  after_update :set_status
+  after_update :set_status, :event_days
 
   def set_defaults
     self.image ||= ImagePlaceholder.image_generator(height:'300', width:'200')
@@ -34,6 +40,12 @@ class Activity < ApplicationRecord
       Date.today
     elsif self.start_date >= Date.today
       self.start_date
+    end
+  end
+
+  def event_to_days
+    Activity.all.each do |act|
+      act.update_attributes(days: act.event_days)
     end
   end
 end
