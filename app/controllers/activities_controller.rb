@@ -32,7 +32,6 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity_events = Activity.find(params[:id])
-
   end
 
   def update
