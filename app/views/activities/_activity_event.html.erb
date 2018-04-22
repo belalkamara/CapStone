@@ -1,0 +1,9 @@
+  <p><%= image_tag event.image unless event.image.nil? %></p>
+  <p><strong><%= link_to event.title, activity_show_path(event) %></strong></p>
+  <p>Start Date:<%= event.start_date %></p>
+  <p>Miles for Event:<%= event.miles %></p>
+  <p>This is a <%= event.days%> day event</p>
+  <p><%= link_to event.status, toggle_status_activity_path(event) %></p>
+  <%= link_to "Edit", edit_activity_path(event) %>
+  <%= link_to 'Delete', activity_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <hr>
