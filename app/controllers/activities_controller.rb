@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   require 'date'
+  before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
   layout "activity"
   
   def index
@@ -31,11 +32,9 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    @activity_events = Activity.find(params[:id])
   end
 
   def update
-    @activity_events = Activity.find(params[:id])
     @activity_events.event_to_days
 
     respond_to do |format|
@@ -50,13 +49,10 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity_events = Activity.find(params[:id])
     @page_title = @activity_events.title
   end
 
   def destroy
-    @activity_events = Activity.find(params[:id])
-
     @activity_events.destroy
     respond_to do |format|
       format.html { redirect_to activities_url, notice: 'Activity was successfully Deleted.' }
@@ -65,8 +61,6 @@ class ActivitiesController < ApplicationController
   end 
 
   def toggle_status
-    @activity_events = Activity.find(params[:id])
-
     if @activity_events.draft?
       @activity_events.live!
     else @activity_events.live?
@@ -92,5 +86,9 @@ class ActivitiesController < ApplicationController
                                      :start_date, 
                                      types_attributes: [:name]
                                      )
+  end
+
+  def set_activity_item
+    @activity_events = Activity.find(params[:id])
   end
 end
