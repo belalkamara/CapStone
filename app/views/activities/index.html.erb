@@ -2,7 +2,7 @@
 
 <%= link_to "Create New Event", new_activity_url %>
 
-<%= render @activity_events %>
+<%= render partial: 'activity_event', collection: @activity_events %>
 
 <!-- Only show live events.... Remove the toggle status when in prod... 
 ALSO SHOW EVENT TYPE-->
