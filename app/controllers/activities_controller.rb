@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   require 'date'
+  layout "activity"
   
   def index
     @activity_events = Activity.all
