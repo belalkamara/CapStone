@@ -8,4 +8,8 @@ class PagesController < ApplicationController
 
   def contact
   end
+
+  def ranking
+    @activity_events = Activity.all
+  end
 end
