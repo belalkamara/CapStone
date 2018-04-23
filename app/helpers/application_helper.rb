@@ -7,4 +7,8 @@ module ApplicationHelper
       (link_to "Login", new_user_session_path)
     end
   end
+
+  def my_copyright
+    Kamara::Renderer.copyright 'Belal Kamara', 'All rights reserved'
+  end
 end
