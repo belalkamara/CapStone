@@ -1,7 +1,8 @@
 class ActivitiesController < ApplicationController
-  require 'date'
   before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
+  require 'date'
   layout "activity"
+  access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
   
   def index
     @activity_events = Activity.all

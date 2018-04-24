@@ -4,6 +4,6 @@
   <p>Miles for Event:<%= activity_event.miles %></p>
   <p>This is a <%= activity_event.days%> day activity_event</p>
   <p><%= link_to activity_event.status, toggle_status_activity_path(activity_event) %></p>
-  <%= link_to "Edit", edit_activity_path(activity_event) %>
-  <%= link_to 'Delete', activity_path(activity_event), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to "Edit", edit_activity_path(activity_event) if logged_in?(:site_admin)  %>
+  <%= link_to 'Delete', activity_path(activity_event), method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin) %>
   <hr>

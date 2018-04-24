@@ -1,6 +1,6 @@
 <h1>Activity Page</h1>
 
-<%= link_to "Create New Event", new_activity_url %>
+<%= link_to "Create New Event", new_activity_url if logged_in?(:site_admin)  %>
 
 <%= render partial: 'activity_event', collection: @activity_events %>
 
