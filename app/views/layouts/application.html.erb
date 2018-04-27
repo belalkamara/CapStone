@@ -15,11 +15,11 @@
   <body>
     
     <%= render "shared/application_nav" %>
-
-    <%= login_helper %>
     
     <%= yield %>
+
     <hr>
-    <%= my_copyright %>
+    <%= render "shared/application_footer" %> 
+
   </body>
 </html>
