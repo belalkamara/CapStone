@@ -6,9 +6,6 @@ class PagesController < ApplicationController
   def about
   end
 
-  def contact
-  end
-
   def ranking
     @activity_events = Activity.all
   end

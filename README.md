@@ -21,7 +21,6 @@
 - Activity
 - Blog
 - Ranking Page
-- Contact Us
 - About Us
 
 
