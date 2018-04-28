@@ -1,5 +1,17 @@
 require 'date'
 
+1.times do |user|
+  User.create!(
+    email: "boom@test.com", 
+    name: "BOOM BABY", 
+    password: "testtest", 
+    password_confirmation: "testtest",
+    roles: "site_admin"
+    )
+end
+
+puts "1 User Created"
+
 3.times do |topic|
   Topic.create!(
     title: "Topic #{topic}"
@@ -13,7 +25,8 @@ puts "3 Topics Created"
     title: "Feet Pain #{blog}", 
     body: "UGH I HATE RUNNING", 
     picture: "http://via.placeholder.com/400x300",
-    topic_id: Topic.last.id
+    topic_id: Topic.last.id,
+    user_id: User.last.id
   )
 end
 
