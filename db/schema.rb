@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428184737) do
+ActiveRecord::Schema.define(version: 20180428192341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20180428184737) do
     t.text "description"
     t.date "start_date"
     t.date "end_date"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180428184737) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "blogs", "topics"
   add_foreign_key "blogs", "users"
   add_foreign_key "types", "activities"

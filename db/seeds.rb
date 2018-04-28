@@ -40,8 +40,8 @@ puts "10 blog posts"
     miles: "10000",
     image: "http://via.placeholder.com/300x200",
     start_date: Date.new(2018, 04, 17),
-    end_date: Date.new(2018, 04, 30)
-    
+    end_date: Date.new(2018, 04, 30),
+    user_id: User.last.id
   )
 end
 
@@ -52,8 +52,8 @@ end
     miles: "100",
     image: "http://via.placeholder.com/300x200",
     start_date: Date.new(2018, 04, 15),
-    end_date: Date.new(2018, 04, 25)
-    
+    end_date: Date.new(2018, 04, 25),
+    user_id: User.last.id
   )
 end
 

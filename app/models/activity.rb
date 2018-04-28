@@ -2,13 +2,14 @@ require 'date'
 
 class Activity < ApplicationRecord
   has_many :types
+  belongs_to :user
   accepts_nested_attributes_for :types, 
                                 reject_if: lambda { |attr| attr['name'].blank? }
 
   include ImagePlaceholder
   enum status: { draft: 0, live: 1, ended: 2 }
 
-  validates_presence_of :title, :miles, :image, :status, :description, :start_date, :end_date
+  validates_presence_of :title, :miles, :image, :status, :description, :start_date, :end_date, :user_id
 
   def self.draft
     where(status: 'draft')
@@ -29,6 +30,7 @@ class Activity < ApplicationRecord
 
   def set_defaults
     self.image ||= ImagePlaceholder.image_generator(height:'300', width:'200')
+    self.user_id ||= User.last.id
   end
 
   def event_days
