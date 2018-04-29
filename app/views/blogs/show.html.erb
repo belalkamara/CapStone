@@ -1,20 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @blog.picture unless @blog.picture.nil? %>
-</p>
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1><%= @blog.title %></h1>
+          <span class="meta">Posted by
+            <a href="#"><%= link_to @blog.user.name.upcase %></a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <%= @blog.body %>
+        </div>
+      </div>
+      <%= link_to 'Edit', edit_blog_path(@blog) if logged_in?(:site_admin) %> |
+      <%= link_to 'Back', blogs_path %>
+    </div>
+  </article>  
 
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body %>
-</p>
 
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+
