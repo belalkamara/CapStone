@@ -1,0 +1,29 @@
+<div class="row mb-2">
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary">Featured post</strong>
+        <h3 class="mb-0">
+          <%= link_to @featured_blog.last.title %>
+        </h3>
+        <div class="mb-1 text-muted"><%= distance_of_time_in_words(@featured_blog.last.created_at, Time.now) %></div>
+        <p class="card-text mb-auto"><%= @featured_blog.last.body.truncate_words(10) %></p>
+      </div>
+      <%= image_tag "http://via.placeholder.com/200x250" %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-success">Featured post</strong>
+        <h3 class="mb-0">
+          <a class="text-dark"><%= link_to @featured_blog.first.title %></a>
+        </h3>
+        <div class="mb-1 text-muted"><%= distance_of_time_in_words(@featured_blog.first.created_at, Time.now) %></div>
+        <p class="card-text mb-auto"><%= @featured_blog.first.body.truncate_words(10) %></p>
+        <a href="#">Continue reading</a>
+      </div>
+      <%= image_tag "http://via.placeholder.com/200x250" %>
+    </div>
+  </div>
+</div>

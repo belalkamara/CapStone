@@ -23,7 +23,7 @@ puts "3 Topics Created"
 10.times do |blog|
   Blog.create!(
     title: "Feet Pain #{blog}", 
-    body: "UGH I HATE RUNNING", 
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip", 
     picture: "http://via.placeholder.com/400x300",
     topic_id: Topic.last.id,
     user_id: User.last.id
