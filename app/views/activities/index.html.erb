@@ -4,5 +4,7 @@
 
 <%= render partial: 'activity_event', collection: @activity_events %>
 
+<%= paginate @activity_events %>
+
 <!-- Only show live events.... Remove the toggle status when in prod... 
 ALSO SHOW EVENT TYPE-->
