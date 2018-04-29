@@ -15,17 +15,17 @@
   </div>
 </header>
 
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <%= @blog.body %>
-        </div>
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <%= @blog.body %>
       </div>
-      <%= link_to 'Edit', edit_blog_path(@blog) if logged_in?(:site_admin) %> |
-      <%= link_to 'Back', blogs_path %>
     </div>
-  </article>  
+    <%= link_to 'Edit', edit_blog_path(@blog) if logged_in?(:site_admin) %> |
+    <%= link_to 'Back', blogs_path %>
+  </div>
+</article>  
 
 
 
