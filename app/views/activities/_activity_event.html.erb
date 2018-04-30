@@ -1,8 +1,20 @@
-  <p><%= image_tag activity_event.image unless activity_event.image.nil? %></p>
-  <p><strong><%= link_to activity_event.title, activity_show_path(activity_event) %></strong></p>
-  <p>Start Date:<%= activity_event.start_date %></p>
-  <p>Miles for Event:<%= activity_event.miles %></p>
-  <p>This is a <%= activity_event.days%> day activity_event</p>
-  <p><%= link_to activity_event.status, toggle_status_activity_path(activity_event) %></p>
-  <%= link_to "Edit", edit_activity_path(activity_event) if logged_in?(:site_admin)  %>
-  <%= link_to 'Delete', activity_path(activity_event), method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin) %>
+<div class="col-md-4">
+  <div class="card mb-4 box-shadow">
+    <%= image_tag activity_event.image unless activity_event.image.nil? %>
+    <div class="card-body">
+      <p class="card-text"><strong><%= link_to activity_event.title, activity_show_path(activity_event) %></strong></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <ul class="list-unstyled mb-0">
+          <li><small class="text-muted"><strong>Days:</strong> <%= activity_event.days%></small></li>
+          <li><small class="text-muted"><strong>Start Date:</strong><%= activity_event.start_date %></small></li>
+          <li><small class="text-muted"><strong>Miles:</strong><%= activity_event.miles %></small></li>
+        </ul>   
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-success">Join</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

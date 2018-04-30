@@ -19,18 +19,11 @@
       <h3 class="pb-3 mb-4 font-italic border-bottom">
         All Blogs
       </h3>
-
       <%= render @blogs %>
-
       <%= paginate @blogs %>
-
     </div>
-
       <%= render 'shared/sidebar' %>
   </div>
 </main>
 <p id="notice"><%= notice %></p>
-
-<br>
-
 <%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
