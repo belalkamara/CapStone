@@ -9,6 +9,17 @@
  * My Custom Styling
  */
 
+.left {
+  width: 20%;
+  float: left;
+}
+
+.right {
+  width: 20%;
+  float: right;
+}
+
+
 :root {
   --jumbotron-padding-y: 3rem;
 }
