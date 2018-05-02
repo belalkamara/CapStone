@@ -6,7 +6,7 @@ module PageTitle
   end
   
   def page_defaults
-    @page_title = "Miles Up"
+    @page_title = "Race the Day"
     @seo_keywords = "BOOM BABY"
   end
 end
