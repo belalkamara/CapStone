@@ -6,6 +6,43 @@
 @import "font-awesome";
 
 
+
+
+/*
+ * Custom Styles
+ */
+
+.card-body {
+  background-color: #F5F5F5;
+}
+
+.card {
+  padding: 40px 40px 40px 40px;
+  border-style: none;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px; 
+}
+
+.auth-link {
+  padding-top: 5px;
+}
+
+.login > .card {
+  width: 30rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * Styling for the footer
  */

@@ -13,8 +13,15 @@
   </div>  
 </header>
 
-<div class="col-lg-8 col-md-10 mx-auto">
-  <%= render 'form', blog: @blog %>
+<div class="card" style="width: 65rem;">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <%= render 'form', blog: @blog %>
 
-  <%= link_to 'Back', blogs_path %>
+        <div class="auth-link">
+          <%= link_to 'Back', blogs_path %>
+        </div>  
+    </div>
+  </div>
 </div>
