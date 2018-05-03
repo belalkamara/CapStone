@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :activities
+    resources :blogs
+    resources :topics
+    resources :types
+    resources :guest_users
+
+    root to: "users#index"
+  end
+
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
   resources :activities, except: [:show] 
   get 'draft-events', to: 'activities#draft'
