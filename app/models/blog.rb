@@ -2,7 +2,7 @@ class Blog < ApplicationRecord
   include ImagePlaceholder
   enum status: { draft: 0, published: 1 }
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   validates_presence_of :title, :body, :picture, :topic_id, :user_id
 

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     resources :blogs
     resources :topics
     resources :types
-    resources :guest_users
 
     root to: "users#index"
   end
