@@ -3,11 +3,11 @@ require "administrate/base_dashboard"
 class TypeDashboard < Administrate::BaseDashboard
  
   ATTRIBUTE_TYPES = {
-    activity: Field::BelongsTo,
-    id: Field::Number,
-    name: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    activity: Field::BelongsTo.with_options(searchable: false),
+    id: Field::Number.with_options(searchable: false),
+    name: Field::String.with_options(searchable: true, seachable_field: 'name'),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false),
   }.freeze
 
   COLLECTION_ATTRIBUTES = [

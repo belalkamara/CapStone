@@ -8,11 +8,11 @@ class TopicDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    blogs: Field::HasMany,
-    id: Field::Number,
-    title: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    blogs: Field::HasMany.with_options(searchable: false),
+    id: Field::Number.with_options(searchable: false),
+    title: Field::String.with_options(searchable: true, seachable_field: 'title'),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false),
   }.freeze
 
   # COLLECTION_ATTRIBUTES

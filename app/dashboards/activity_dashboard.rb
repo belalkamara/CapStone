@@ -3,20 +3,21 @@ require "administrate/base_dashboard"
 class ActivityDashboard < Administrate::BaseDashboard
  
   ATTRIBUTE_TYPES = {
-    types: Field::HasMany,
-    user: Field::BelongsTo,
-    id: Field::Number,
-    title: Field::String,
-    miles: Field::Number,
-    image: Field::Text,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    status: Field::String.with_options(searchable: false),
-    days: Field::Number,
-    description: Field::Text,
-    start_date: Field::DateTime,
-    end_date: Field::DateTime,
+    types: Field::HasMany.with_options(searchable: false),
+    user: Field::BelongsTo.with_options(searchable: false),
+    id: Field::Number.with_options(searchable: false),
+    title: Field::String.with_options(searchable: true, seachable_field: 'title'),
+    miles: Field::Number.with_options(searchable: false),
+    image: Field::Text.with_options(searchable: false),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false),
+    status: Field::String.with_options(searchable: true, seachable_field: 'status'),
+    days: Field::Number.with_options(searchable: false),
+    description: Field::Text.with_options(searchable: false),
+    start_date: Field::DateTime.with_options(searchable: false),
+    end_date: Field::DateTime.with_options(searchable: false),
   }.freeze
+
   COLLECTION_ATTRIBUTES = [
     :user,
     :id,
