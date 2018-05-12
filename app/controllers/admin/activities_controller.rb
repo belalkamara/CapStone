@@ -2,7 +2,9 @@ module Admin
   class ActivitiesController < Admin::ApplicationController
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
-    #
+    def display_resource(user)
+      user.name
+    end
     # def index
     #   super
     #   @resources = Activity.

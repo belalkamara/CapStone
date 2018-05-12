@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
   require 'date'
   layout "activity"
-  access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
+  access all: [:show, :index], user: :all, site_admin: :all
   
   def index
     @activity_events = Activity.page(params[:page]).per(9)
@@ -77,6 +77,10 @@ class ActivitiesController < ApplicationController
 
   private
 
+  def activity_auth
+    
+  end
+
   def activity_params
     params.require(:activity).permit(:title, 
                                      :description, 
@@ -85,6 +89,7 @@ class ActivitiesController < ApplicationController
                                      :days,
                                      :end_date,
                                      :start_date, 
+                                     :user_id,
                                      types_attributes: [:name]
                                      )
   end
