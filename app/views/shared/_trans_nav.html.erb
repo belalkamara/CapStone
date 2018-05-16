@@ -20,7 +20,22 @@
         <li class="nav-item">
           <%= link_to "Ranking", ranking_path, class: 'nav-link' %>
         </li>
-          <%= login_helper 'nav-link' %>
+
+        <li class="dropdown pull-right nav-item menu-link">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">Menu<strong class="caret"></strong></a>
+          <ul class="dropdown-menu">
+
+            <% if current_user.try(:role) == :site_admin %>
+              <%= render 'shared/admin_dropdown' %>
+            <% end %>  
+            
+            <li>
+              <%= login_helper 'nav-link' %>
+            </li>
+
+          </ul>
+        </li>
+
       </ul>
     </div>
   </div>
