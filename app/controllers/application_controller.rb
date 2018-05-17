@@ -3,5 +3,6 @@ class ApplicationController < ActionController::Base
   include DeviseWhitelist
   include CurrentUserConcern
   include PageTitle
+  include Pundit
 
 end

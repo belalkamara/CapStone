@@ -46,6 +46,10 @@ class ApplicationPolicy
       @scope = scope
     end
 
+    def admin_role
+      [:site_admin]
+    end
+
     def resolve
       scope
     end
