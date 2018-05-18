@@ -107,6 +107,7 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gritter (1.2.0)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -255,6 +256,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   font-awesome-rails (~> 4.7, >= 4.7.0.2)
   friendly_id (~> 5.2, >= 5.2.3)
+  gritter (~> 1.2)
   jbuilder (~> 2.5)
   kamara!
   kaminari (~> 1.1, >= 1.1.1)
