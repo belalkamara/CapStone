@@ -7,6 +7,8 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.page(params[:page]).per(7)
+
+    @user_blogs = current_user.blogs.page(params[:page]).per(7)
   end
 
   # GET /blogs/1
