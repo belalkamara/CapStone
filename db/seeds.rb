@@ -39,8 +39,8 @@ puts "10 blog posts"
     description: "We need to run 10000 miles in 100 days.",
     miles: "10000",
     image: "http://via.placeholder.com/300x200",
-    start_date: Date.new(2018, 04, 17),
-    end_date: Date.new(2018, 04, 30),
+    start_date: Date.new(2018, 06, 17),
+    end_date: Date.new(2018, 10, 30),
     user_id: User.last.id
   )
 end
@@ -52,7 +52,7 @@ end
     miles: "100",
     image: "http://via.placeholder.com/300x200",
     start_date: Date.new(2018, 04, 15),
-    end_date: Date.new(2018, 04, 25),
+    end_date: Date.new(2018, 08, 25),
     user_id: User.last.id
   )
 end

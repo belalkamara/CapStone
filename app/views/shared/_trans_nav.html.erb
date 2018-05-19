@@ -27,7 +27,11 @@
 
             <% if current_user.try(:role) == :site_admin %>
               <%= render 'shared/admin_dropdown' %>
-            <% end %>  
+            <% end %>
+
+            <% if current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
+              <%= render 'shared/user_dropdown' %>
+            <% end %>    
             
             <li>
               <%= login_helper 'nav-link' %>

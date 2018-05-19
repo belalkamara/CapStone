@@ -9,4 +9,8 @@ class PagesController < ApplicationController
   def ranking
     @activity_events = Activity.all
   end
+
+  def user_dashboard
+    
+  end
 end

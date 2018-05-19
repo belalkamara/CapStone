@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
   get 'ranking', to: 'pages#ranking'
+  get 'user_dashboard', to: 'pages#user_dashboard'
 
   resources :blogs, :activities do
     member do
