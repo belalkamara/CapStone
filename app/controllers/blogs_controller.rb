@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.page(params[:page]).per(7)
 
-    @user_blogs = current_user.blogs.page(params[:page]).per(7)
+    @user_blogs = Blog.page(params[:page]).per(7).blogs_by current_user
   end
 
   # GET /blogs/1
