@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   resources :activities, except: [:show] 
   get 'draft-events', to: 'activities#draft'
   get 'activity/:id', to: 'activities#show', as: "activity_show"
+  get 'user-dashboard', to: 'user_dashboard#index'
 
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
   get 'ranking', to: 'pages#ranking'
-  get 'user_dashboard', to: 'pages#user_dashboard'
 
   resources :blogs, :activities do
     member do
