@@ -1,16 +1,9 @@
-<head>
-<%= stylesheet_link_tag    'user_dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
-</head>
-
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
-<%= render 'shared/user_dash_nav' %>
-
 <div class="content-wrapper">
-  <div class="container-fluid">
+  <div class="card">
     <div class="card-body">
       <div class="row">
         <div class="col-md-8">
-          <h2>Edit <%= resource_name.to_s.humanize %></h2>
+          <h2>Edit <%= resolve_asset.to_s.humanize %></h2>
           
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= devise_error_messages! %>
@@ -61,7 +54,3 @@
     </div>
   </div>
 </div>
-</body>
-
-
-

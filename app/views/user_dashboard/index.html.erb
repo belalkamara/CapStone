@@ -46,6 +46,16 @@
         </div>
       </div>
 
+      <div>
+        <%= @user_miles %>
+      </div>
+      
+      <div class="card" style="width: 65rem;">
+        <div class="card-body">
+          <%= render 'form', user_miles: @user_miles %>
+        </div>
+      </div>
+
       <%= render @user_published_blogs %>
       <%= render @user_draft_blogs %>
 
