@@ -56,8 +56,18 @@
         </div>
       </div>
 
-      <%= render @user_published_blogs %>
-      <%= render @user_draft_blogs %>
+      <div>
+        <%= render @user_published_blogs %>
+        <%= render @user_draft_blogs %>
+      </div>
+
+      <div>
+        <%= render @live_activities %>
+
+        <%= render @ended_activities %>
+
+        <%= render @draft_activities %>
+      </div>
 
     </div>
   </div>
