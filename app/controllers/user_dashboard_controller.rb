@@ -10,9 +10,23 @@ class UserDashboardController < ApplicationController
     @ended_activities = Activity.ended.activities_by current_user  
 
     @live_activities = Activity.live.activities_by current_user 
-
-    # @user_miles = User.miles
   end
+
+  # def edit
+    
+  # end
+
+  # def update
+  #   @user_miles = User.find(params[:id])
+
+  #   respond_to do |format|
+  #     if @user_miles.update_attributes(params[:miles])
+  #       redirect_to "/user-dashboard"
+  #     else
+  #       render "edit"
+  #     end
+  #   end
+  # end
 
   def profile
     
@@ -20,5 +34,15 @@ class UserDashboardController < ApplicationController
 
   def active_activities
     
+  end
+
+  private
+
+  def user_params
+      params.require(:user).permit(:email, :name, :miles, :day)
+   end
+
+  def set_user_miles
+    @user_miles = User.find(params[:id])
   end
 end

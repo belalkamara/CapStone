@@ -6,7 +6,6 @@ class ActivitiesController < ApplicationController
   
   def index
     @activity_events = Activity.page(params[:page]).per(9)
-
   end
 
   def draft
@@ -75,11 +74,11 @@ class ActivitiesController < ApplicationController
     redirect_to activities_url, notice: "Your activity status has been updated."
   end
 
-  private
 
-  def activity_auth
-    
+  def join_event
   end
+
+  private
 
   def activity_params
     params.require(:activity).permit(:title, 

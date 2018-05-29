@@ -10,12 +10,13 @@
           <li><small class="text-muted"><strong>Miles:</strong><%= activity_event.miles %></small></li>    
           <%= link_to 'Destroy', activity_event, method: :delete, data: { confirm: 'Are you sure?' } %>
         </ul>   
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-success">Join</button>
-        </div>
+        <div class="actions">
+          <%= submit_tag 'Join', name: 'join_event', class: "btn btn-sm btn-success " %>
+        </div>   
       </div>
     </div>
   </div>
 </div>
+
 
 

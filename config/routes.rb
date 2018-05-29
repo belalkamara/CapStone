@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'draft-events', to: 'activities#draft'
   get 'activity/:id', to: 'activities#show', as: "activity_show"
   get 'user-dashboard', to: 'user_dashboard#index'
+  post "user-dashboard"            => "user_dashboard#update"
   get 'user-profile', to: 'user_dashboard#profile'
   get 'user-activities', to: 'user_dashboard#active_activities'
 
