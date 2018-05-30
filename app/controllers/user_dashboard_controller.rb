@@ -12,6 +12,10 @@ class UserDashboardController < ApplicationController
     @live_activities = Activity.live.activities_by current_user
   end
 
+  def sort
+    
+  end
+
   # def edit
     
   # end

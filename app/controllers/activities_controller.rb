@@ -8,6 +8,14 @@ class ActivitiesController < ApplicationController
     @activity_events = Activity.page(params[:page]).per(9).by_position
   end
 
+  def sort
+    params[:order].each do |key, value|
+      Activity.find(value[:id]).update(position: value[:position])
+    end
+
+    render nothing: :true
+  end
+
   def draft
     @draft_events = Activity.draft
   end

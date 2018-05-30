@@ -1,5 +1,5 @@
 <div class="col-md-4">
-  <div class="card mb-4 box-shadow">
+  <div class="card mb-4 box-shadow" data-id="<%= activity.id %>">
     <%= image_tag activity.image unless activity.image.nil? %>
     <div class="card-body">
       <p class="card-text"><strong><%= link_to activity.title.truncate_words(6), activity_show_path(activity) %></strong></p>
