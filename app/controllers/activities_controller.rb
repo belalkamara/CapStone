@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   # access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
   
   def index
-    @activity_events = Activity.page(params[:page]).per(9)
+    @activity_events = Activity.page(params[:page]).per(9).by_position
   end
 
   def draft

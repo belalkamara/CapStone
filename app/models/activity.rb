@@ -52,4 +52,8 @@ class Activity < ApplicationRecord
       act.update_attributes(days: act.event_days)
     end
   end
+
+  def self.by_position
+    order("position ASC")
+  end
 end
