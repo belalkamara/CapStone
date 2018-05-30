@@ -9,7 +9,7 @@ class UserDashboardController < ApplicationController
 
     @ended_activities = Activity.ended.activities_by current_user  
 
-    @live_activities = Activity.live.activities_by current_user 
+    @live_activities = Activity.live.activities_by current_user
   end
 
   # def edit
@@ -33,7 +33,7 @@ class UserDashboardController < ApplicationController
   end
 
   def active_activities
-    
+    @live_activities = Activity.live.by_position.activities_by current_user
   end
 
   private
