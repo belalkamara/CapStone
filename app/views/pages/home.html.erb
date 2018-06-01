@@ -4,7 +4,6 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            
             <h1><h1>Hi <%= current_user.first_name %></h1></h1>
             <span class="subheading">Welcome to Race the Day!</span>
           </div>
@@ -35,5 +34,18 @@
       </div>
     </div>
   </div>
+
+  <section class="bg-primary" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading text-white">About Start Your Day!</h2>
+          <hr class="light my-4">
+          <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+          <%= link_to "Get Started!", new_user_registration_path, class: 'btn btn-light btn-xl js-scroll-trigger' %>
+        </div>
+      </div>
+    </div>
+  </section>    
 </body>
 
