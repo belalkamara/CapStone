@@ -77,6 +77,7 @@ footer {
   .navbar-brand {
     font-weight: 800;
     color: $gray-800;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
   .navbar-toggler {
     font-size: 12px;
@@ -92,6 +93,7 @@ footer {
         font-weight: 800;
         letter-spacing: 1px;
         text-transform: uppercase;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
       }
     }
   }
@@ -200,13 +202,17 @@ header.masthead {
     height: 100%;
     width: 100%;
     background-color: $gray-900;
-    opacity: 0.5;
+    background-image: url("bridge.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .page-heading,
   .post-heading,
   .site-heading {
     padding: 200px 0 150px;
     color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     @media only screen and (min-width: 768px) {
       padding: 200px 0;
     }
@@ -224,6 +230,7 @@ header.masthead {
       line-height: 1.1;
       display: block;
       margin: 10px 0 0;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
     @media only screen and (min-width: 768px) {
       h1 {
