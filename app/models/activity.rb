@@ -11,6 +11,8 @@ class Activity < ApplicationRecord
 
   validates_presence_of :title, :miles, :image, :status, :description, :start_date, :end_date, :user_id
 
+  mount_uploader :image, ActivityUploader
+
   scope :activities_by, ->(user) { where(user_id: user.id) }
 
   def self.draft
