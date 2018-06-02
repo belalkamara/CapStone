@@ -6,10 +6,9 @@ class Activity < ApplicationRecord
   accepts_nested_attributes_for :types, 
                                 reject_if: lambda { |attr| attr['name'].blank? }
 
-  include ImagePlaceholder
   enum status: { draft: 0, live: 1, ended: 2 }
 
-  validates_presence_of :title, :miles, :image, :status, :description, :start_date, :end_date, :user_id
+  validates_presence_of :title, :miles, :status, :description, :start_date, :end_date, :user_id
 
   mount_uploader :image, ActivityUploader
 
@@ -33,7 +32,6 @@ class Activity < ApplicationRecord
   after_update :set_status, :event_days
 
   def set_defaults
-    self.image ||= ImagePlaceholder.image_generator(height:'300', width:'200')
     self.user_id ||= User.last.id
   end
 

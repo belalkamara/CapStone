@@ -52,7 +52,7 @@ end
     miles: "100",
     image: "http://via.placeholder.com/300x200",
     start_date: Date.new(2018, 04, 15),
-    end_date: Date.new(2018, 08, 25),
+    end_date: Date.new(2018, 10, 30),
     user_id: User.last.id
   )
 end
