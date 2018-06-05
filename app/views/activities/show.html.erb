@@ -47,8 +47,12 @@
   </div>
 </div>
 
+<% if logged_in?(:user) %>
+  <div class="col-md-12">
+   <%= link_to "Edit Activity", edit_activity_path(@activity_events), class: 'btn btn-warning' %>
+  </div>
+<% end %>
 
-<!-- figure out how to format the date -->
 
 <!-- Have the Start date be the publish date -->
 

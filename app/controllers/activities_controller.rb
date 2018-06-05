@@ -22,7 +22,6 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity_events = Activity.new
-    1.times { @activity_events.types.build }
   end
 
   def create
@@ -58,6 +57,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @page_title = @activity_events.title
+
+    @user_activities = Activity.activities_by current_user
   end
 
   def destroy
@@ -97,7 +98,7 @@ class ActivitiesController < ApplicationController
                                      :end_date,
                                      :start_date, 
                                      :user_id,
-                                     types_attributes: [:name]
+                                     types_attributes: [:id, :name, :_destroy]
                                      )
   end
 
