@@ -13,4 +13,8 @@ class PagesController < ApplicationController
   def user_dashboard
     
   end
+
+  def tweets
+    @tweets = SocialTool.twitter_search
+  end
 end

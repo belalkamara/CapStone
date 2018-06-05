@@ -1,0 +1,15 @@
+<%= @tweets.inspect %>
+
+<section class="bg-light" id="tweets">
+  <div class="container">
+    <div class="row">
+      <% @tweets.each do |tweet| %>
+        <div class="tweets">
+          <div class="card">
+            <%= tweet %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section> 
