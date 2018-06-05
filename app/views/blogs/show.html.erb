@@ -19,6 +19,9 @@
       <div class="col-lg-8 col-md-10 mx-auto">
         <%= @blog.body %>
       </div>
+      <div>
+        Blog Topic: <% @blog.topic.title %>
+      </div>
     </div>
     <%= link_to 'Edit', edit_blog_path(@blog) if Blog.blogs_by current_user %> 
     <%= link_to 'Back', blogs_path %>
