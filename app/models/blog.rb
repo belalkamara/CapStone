@@ -18,4 +18,8 @@ class Blog < ApplicationRecord
     self.topic_id ||= Topic.last.id
     self.user_id ||= User.last.id
   end
+
+  def self.recent
+    order("created_at DESC")
+  end
 end
