@@ -23,8 +23,9 @@
 
         <%= render 'comments/comment_form' %>
 
-        <%= render @blog.comments %>
-        
+        <div id="comments" data-blog-id="<%= @blog.id %>">
+          <%= render @blog.comments %>
+        </div>
       </div>
     </div>
     <%= link_to 'Edit', edit_blog_path(@blog) if Blog.blogs_by current_user %> 
