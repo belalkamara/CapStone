@@ -4,8 +4,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <h1><%= @topic.title %></h1>
           </div>
         </div>
       </div>
@@ -13,11 +12,12 @@
   </div>  
 </header>
 
+
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
       <h3 class="pb-3 mb-4 font-italic border-bottom">
-        All Blogs
+        <%= @topic.title %> Blogs
       </h3>
       <%= render @blogs %>
       <%= paginate @blogs %>
@@ -25,4 +25,3 @@
       <%= render 'shared/blog_sidebar' %>
   </div>
 </main>
-<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
