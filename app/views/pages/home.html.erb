@@ -14,6 +14,7 @@
 </header>
 
 <body>
+
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -48,9 +49,51 @@
   </section> 
   
   <section>
-    
-  </section> 
-
+    <div class="inner cover">
+      <div class="container">
+        <div class="row">
+          <div class="tweets">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" data-interval="1000" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1" data-interval="1000"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2" data-interval="1000"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="media">
+                    <i class="mr-3 fa fa-twitter-square fa-5x" aria-hidden="true"></i>
+                    <div class="media-body">
+                      <h5 class="mt-0">Live Tweets</h5>
+                        <%= twitter_parser SocialTool.twitter_search.first %>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="media">
+                    <i class="mr-3 fa fa-twitter-square fa-5x" aria-hidden="true"></i>
+                    <div class="media-body">
+                      <h5 class="mt-0">Live Tweets</h5>
+                        <%= twitter_parser SocialTool.twitter_search.second %>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="media">
+                    <i class="mr-3 fa fa-twitter-square fa-5x" aria-hidden="true"></i>
+                    <div class="media-body">
+                      <h5 class="mt-0">Live Tweets</h5>
+                        <%= twitter_parser SocialTool.twitter_search.third %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>        
+  </section>
 
 </body>
 
