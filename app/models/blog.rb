@@ -10,6 +10,8 @@ class Blog < ApplicationRecord
   belongs_to :topic
   belongs_to :user
 
+  has_many :comments, dependent: :destroy
+
   after_initialize :set_defaults
 
   def set_defaults
