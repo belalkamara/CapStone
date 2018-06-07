@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   namespace :admin do
     resources :users
     resources :activities
@@ -32,5 +31,7 @@ Rails.application.routes.draw do
     end
   end
   
+  mount ActionCable.server => '/cable'
+
   root to: 'pages#home'
 end
