@@ -23,10 +23,15 @@
 
   <h3>Activity Topic</h3>
   <div class="form-group">
-    <%= form.fields_for :topics do |x| %>
-      <%= x.label :topic %>
-      <%= x.text_field :title, class: "form-control" %>
-    <% end %>
+    <%= form.label :topic_id %>
+    <%= form.collection_select(:topic_id, Topic.all, :id, :title, 
+                                {
+                                  selected: blog.topic_id,
+                                  include_blank: true
+                                },
+                                 class: 'form-control'
+                              )
+    %>
   </div>
 
   <div class="form-group" style="width: 20rem;">
