@@ -19,7 +19,7 @@
       <div class="col-lg-8 col-md-10 mx-auto">
         <p>Blog Topic: <%= @blog.topic.title %></p>
 
-        <p><%= @blog.body %></p>
+        <p><%= markdown @blog.body %></p>
 
         <%= render 'comments/comment_form' %>
 
