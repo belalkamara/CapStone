@@ -41,6 +41,14 @@
     <p><small><em>Image Optional</em></small></p>
   </div>
 
+  <div class="form-group">
+    <%= form.label :status, 'Draft' %>
+    <%= form.radio_button :status, 'draft' %>
+    
+    <%= form.label :status, 'Published' %>
+    <%= form.radio_button :status, 'published' %>
+  </div>
+
   <div class="actions">
     <%= form.submit "Submit", class: "btn btn-primary " %>
   </div>
