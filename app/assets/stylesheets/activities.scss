@@ -24,6 +24,13 @@
   margin-bottom: 10px; 
 }
 
+.card > img {
+  float: left;
+  width: 100%;
+  padding: .75rem;
+  margin-bottom: 2em;
+}
+
 .auth-link {
   padding-top: 5px;
 } 
