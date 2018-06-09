@@ -15,6 +15,12 @@ module BlogsHelper
     image_tag "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user.email)}", width: 60
   end
 
+  class CodeRayify < Redcarpet::Render::HTML 
+    def block_code(code, language)
+      CodeRay.scan(code, language).div
+    end
+  end
+
   def markdown(text)
     coderayified = CodeRayify.new(filter_html: true, hard_wrap: true)
 
