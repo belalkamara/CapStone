@@ -2,15 +2,15 @@ require 'date'
 
 1.times do |user|
   User.create!(
-    email: "boom@test.com", 
-    name: "BOOM BABY", 
-    password: "testtest", 
-    password_confirmation: "testtest",
+    email: "belalkamara@gmail.com", 
+    name: "Belal Kamara", 
+    password: "Sweetnovember", 
+    password_confirmation: "Sweetnovember",
     roles: "site_admin"
     )
 end
 
-puts "1 User Created"
+puts "1 Admin User Created"
 
 3.times do |topic|
   Topic.create!(
@@ -39,7 +39,7 @@ puts "10 blog posts"
     description: "We need to run 10000 miles in 100 days.",
     miles: "10000",
     image: "http://via.placeholder.com/300x200",
-    start_date: Date.new(2018, 06, 17),
+    start_date: Date.new(2018, 10, 17),
     end_date: Date.new(2018, 10, 30),
     user_id: User.last.id
   )
