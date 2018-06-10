@@ -1,0 +1,9 @@
+<div class="p-3">
+  <h4 class="font-italic">Topic</h4>
+  <ol class="list-unstyled mb-0">
+    <li><%= link_to "All Blogs", blogs_path %></li>
+    <% @sidebar_topics.each do |topic| %>
+      <li><%= link_to topic.title, topic_path(topic) %></li>
+    <% end %>
+  </ol>
+</div>

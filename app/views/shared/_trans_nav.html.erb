@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#">Race the Day!</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        <%= link_to "Home", root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Blog", blogs_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Activity", activities_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Ranking", ranking_path, class: 'nav-link' %>
+        </li>
+
+        <li class="dropdown pull-right nav-item menu-link">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">Menu<strong class="caret"></strong></a>
+          <ul class="dropdown-menu">
+
+            <% if current_user.try(:role) == :site_admin %>
+              <%= render 'shared/admin_dropdown' %>
+            <% end %>
+
+            <% if current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
+              <%= render 'shared/user_dropdown' %>
+            <% end %>    
+            
+            <li>
+              <%= login_helper 'nav-link' %>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -2,11 +2,18 @@ class ActivitiesController < ApplicationController
   before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
   require 'date'
   layout "activity"
-  access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
+  # access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
   
   def index
-    @activity_events = Activity.all
+    @activity_events = Activity.page(params[:page]).per(9).by_position
+  end
 
+  def sort
+    params[:order].each do |key, value|
+      Activity.find(value[:id]).update(position: value[:position])
+    end
+
+    render nothing: :true
   end
 
   def draft
@@ -15,7 +22,6 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity_events = Activity.new
-    1.times { @activity_events.types.build }
   end
 
   def create
@@ -51,6 +57,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @page_title = @activity_events.title
+
+    @user_activities = Activity.activities_by current_user
   end
 
   def destroy
@@ -75,6 +83,10 @@ class ActivitiesController < ApplicationController
     redirect_to activities_url, notice: "Your activity status has been updated."
   end
 
+
+  def join_event
+  end
+
   private
 
   def activity_params
@@ -85,7 +97,8 @@ class ActivitiesController < ApplicationController
                                      :days,
                                      :end_date,
                                      :start_date, 
-                                     types_attributes: [:name]
+                                     :user_id,
+                                     types_attributes: [:id, :name, :_destroy]
                                      )
   end
 

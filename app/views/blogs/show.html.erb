@@ -1,20 +1,51 @@
-<p id="notice"><%= notice %></p>
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1><%= @blog.title %></h1>
+          <span class="meta">Posted by
+            <a href="#"><%= link_to @blog.user.name.upcase %></a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag @blog.picture unless @blog.picture.nil? %>
-</p>
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+        <p>Blog Topic: <%= @blog.topic.title %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body %>
-</p>
+        <p><%= markdown @blog.body %></p>
+
+        
+
+        <%= render 'comments/comment_form' %>
 
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+
+        <div id="comments" data-blog-id="<%= @blog.id %>">
+          <%= render @blog.comments %>
+        </div>
+      </div>
+    </div>
+     
+    <div class="pull-left">
+    <%= link_to 'Back', blogs_path %>
+
+    <% if logged_in?(:site_admin) %>
+      / <%= link_to fa_icon('pencil-square-o'), edit_blog_path(@blog) %> 
+      / <%= link_to fa_icon('trash'), @blog, method: :delete, data: { confirm: 'Are you sure you want to delete this post' } if logged_in?(:site_admin) %>
+      / Blog status: <%= @blog.status %>
+    </div>
+    <% end %>
+
+  </div>
+</article>  
+
+
+

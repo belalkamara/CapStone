@@ -1,5 +1,20 @@
-<h1>New Blog</h1>
+<header class="masthead">
+  <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>New Blog</h1>
+            <span class="subheading">Express Yourself in Every Way Possible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</header>
 
-<%= render 'form', blog: @blog %>
+<div class="col-lg-8 col-md-10 mx-auto">
+  <%= render 'form', blog: @blog %>
 
-<%= link_to 'Back', blogs_path %>
+  <%= link_to 'Back', blogs_path %>
+</div>

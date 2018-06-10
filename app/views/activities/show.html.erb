@@ -1,20 +1,58 @@
-<%= image_tag @activity_events.image unless @activity_events.image.nil? %>
-<h1><%= @activity_events.title %></h1>
-<p>Description:<%= @activity_events.description %></p>
-<p>Miles:<%= @activity_events.miles %></p>
-<p>Start Date:<%= @activity_events.start_date %></p>
-<p>End Date:<%= @activity_events.end_date %></p>
+<header class="masthead">
+  <div class="overlay"><!-- put the image here put figure out how to make the quality high and fit the masthead --></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1><%= @activity_events.title %></h1>
+          <span class="meta">Posted by
+            <a href="#"><%= link_to @activity_events.user.name.upcase %></a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<p>Days Remaining:<%= @activity_events.days %></p>
 
-<H3>Event Type</H3>
-<% @activity_events.types.each do |x| %>
-<p><%= x.name %></p>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <div class="left">
+        Miles:<%= @activity_events.miles %>
+      </div>
+      <div class="right">
+        Start Date:<%= @activity_events.start_date %>  
+      </div>
+      <div class="right">
+        End Date:<%= @activity_events.end_date %>
+       </div> 
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Description:</h5>
+      <p class="card-text"><%= @activity_events.description %></p>
+      <div class="btn-group">
+        <button type="button" class="btn btn-success">Join</button>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="left">
+        Days Remaining:<%= @activity_events.days %>
+      </div>
+      <div class="right">
+        Event Type: <% @activity_events.types.each do |x| %>
+                      <%= x.name %>
+                    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if logged_in?(:user) %>
+  <div class="col-md-12">
+   <%= link_to "Edit Activity", edit_activity_path(@activity_events), class: 'btn btn-warning' %>
+  </div>
 <% end %>
-<hr>
 
-
-<!-- figure out how to format the date -->
 
 <!-- Have the Start date be the publish date -->
 
