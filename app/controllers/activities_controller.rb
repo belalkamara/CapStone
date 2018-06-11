@@ -97,8 +97,7 @@ class ActivitiesController < ApplicationController
                                      :days,
                                      :end_date,
                                      :start_date, 
-                                     :user_id,
-                                     types_attributes: [:id, :name, :_destroy]
+                                     :user_id
                                      )
   end
 

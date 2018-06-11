@@ -1,11 +1,8 @@
 require 'date'
 
 class Activity < ApplicationRecord
-  has_many :types
+  belongs_to :type
   belongs_to :user
-  accepts_nested_attributes_for :types, 
-                                allow_destroy: true,
-                                reject_if: lambda { |attr| attr['name'].blank? }
 
   enum status: { draft: 0, live: 1, ended: 2 }
 

@@ -40,9 +40,7 @@
 
       <h3>Activity Type</h3>
       <div>
-        <%= form.fields_for :types do |type_form| %>
-          <%= render 'type_fields', f: type_form %>
-        <% end %>
+        
 
         <div>
           <%= link_to_add_association 'Add Type', form, :types %>
