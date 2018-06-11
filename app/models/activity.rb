@@ -6,7 +6,7 @@ class Activity < ApplicationRecord
 
   enum status: { draft: 0, live: 1, ended: 2 }
 
-  validates_presence_of :title, :miles, :status, :description, :start_date, :end_date, :user_id
+  validates_presence_of :title, :miles, :status, :description, :start_date, :end_date, :user_id, :type_id
 
   mount_uploader :image, ActivityUploader
 

@@ -97,7 +97,8 @@ class ActivitiesController < ApplicationController
                                      :days,
                                      :end_date,
                                      :start_date, 
-                                     :user_id
+                                     :user_id,
+                                     :type_id
                                      )
   end
 
