@@ -43,7 +43,7 @@
         <%= form.label :type_id %>
         <%= form.collection_select(:type_id, Type.all, :id, :title, 
                                     {
-                                      selected: activity.type_id,
+                                      selected: @activity_events.type_id,
                                       include_blank: true
                                     },
                                      class: 'form-control'

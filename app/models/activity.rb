@@ -54,4 +54,8 @@ class Activity < ApplicationRecord
   def self.by_position
     order("position ASC")
   end
+
+  def self.recent
+    order("created_at DESC")
+  end
 end

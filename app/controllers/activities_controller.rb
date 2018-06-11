@@ -5,7 +5,11 @@ class ActivitiesController < ApplicationController
   # access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
   
   def index
-    @activity_events = Activity.page(params[:page]).per(9).by_position
+    if logged_in?(:site_admin)
+      @activity_events = Activity.recent.page(params[:page]).per(9).by_position
+    else
+      @activity_events = Activity.live.recent.page(params[:page]).per(9).by_position
+    end
   end
 
   def sort

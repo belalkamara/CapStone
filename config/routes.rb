@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :types, only: [:index, :show]
+
   resources :topics, only: [:index, :show]
 
   namespace :admin do

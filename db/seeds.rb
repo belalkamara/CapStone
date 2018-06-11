@@ -29,6 +29,13 @@ puts "1 Topics Created"
 end
 puts "10 blog posts"
 
+1.times do |type|
+  Type.create!(
+    title: "Marathon"
+  )
+end
+puts "1 Activity types created"
+
 
 6.times do |x|
   Activity.create!(
@@ -56,10 +63,3 @@ end
   )
 end
 puts "7 activities posts"
-
-1.times do |type|
-  Type.create!(
-    title: "Marathon"
-  )
-end
-puts "1 Activity types created"
