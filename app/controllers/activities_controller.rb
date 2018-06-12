@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
+  before_action :set_sidebar_types, except: [:update, :create, :destroy, :toggle_status]
   require 'date'
   layout "activity"
   # access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
@@ -108,5 +109,9 @@ class ActivitiesController < ApplicationController
 
   def set_activity_item
     @activity_events = Activity.find(params[:id])
+  end
+
+  def set_sidebar_types
+    @sidebar_types  = Type.with_activities
   end
 end

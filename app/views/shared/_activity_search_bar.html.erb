@@ -1,13 +1,13 @@
 <div class="container">
   <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand">
-      <button class="btn active" > Show all</button>
-      <button class="btn" > Biking</button>
-      <button class="btn" > Running</button>
+      <button class="btn"><%= link_to fa_icon('fa-plus-square-o'), new_activity_url if logged_in?(:site_admin) %></button>
+      <button class="btn active" ><%= link_to "All Activities", activities_path %></button>
+      <% @sidebar_types.each do |type| %>
+        <button class="btn" ><%= link_to type.title, type_path(type) %></button>
+      <% end %>
     </a>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </nav>
 </div>
+
+
