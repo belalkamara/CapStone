@@ -19,11 +19,8 @@
 <div class="album py-5">
   <div class="container">
     <div class="row">
-      <h3 class="pb-3 mb-4 font-italic border-bottom">
-        <%= @type.title %> Activities
-      </h3>
       
-      <%= render partial: 'activity_event', collection: @activity_events %>
+      <%= render partial: 'activities/activity_event', collection: @activity_events %>
 
       <%= paginate @activity_events %>
     </div>

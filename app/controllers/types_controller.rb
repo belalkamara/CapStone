@@ -8,9 +8,9 @@ class TypesController < ApplicationController
     @type = Type.find(params[:id])
 
     if logged_in?(:site_admin)
-      @activity_events = @types.activities.recent.page(params[:page]).per(9).by_position
+      @activity_events = @type.activities.recent.page(params[:page]).per(9).by_position
     else
-      @activity_events = @types.activities.live.recent.page(params[:page]).per(9).by_position
+      @activity_events = @type.activities.live.recent.page(params[:page]).per(9).by_position
     end
   end
 end
