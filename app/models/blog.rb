@@ -5,6 +5,8 @@ class Blog < ApplicationRecord
 
   validates_presence_of :title, :body, :topic_id, :user_id
 
+  mount_uploader :picture, BlogUploader
+
   scope :blogs_by, ->(user) { where(user_id: user.id) }
 
   belongs_to :topic

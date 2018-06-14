@@ -17,6 +17,16 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
+        
+        <hr>
+
+          <p class="text-center">Posted <%= distance_of_time_in_words(@blog.created_at, Time.now) %> ago</p>
+
+        <hr>
+
+        <%= image_tag blog_img(@blog.picture, 'picture'), height:'400px', width:'400px', class: "center-block" %>
+
+        <hr>
 
         <p>Blog Topic: <%= @blog.topic.title %></p>
 
