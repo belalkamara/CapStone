@@ -31,7 +31,11 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
-    @blog = Blog.new
+    if logged_in?(:user) && current_user.try(:name) != "Guest User"
+      @blog = Blog.new
+    else
+      redirect_to blogs_path, notice: "You are not authorized to access this page"
+    end
   end
 
   # GET /blogs/1/edit
