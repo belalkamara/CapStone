@@ -26,7 +26,11 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity_events = Activity.new
+    if logged_in?(:user) && current_user.try(:name) != "Guest User"
+      @activity_events = Activity.new
+    else
+      redirect_to root_path, notice: "You are not authorized to access this page"
+    end
   end
 
   def create
