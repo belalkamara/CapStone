@@ -13,6 +13,8 @@
   </div>  
 </header>
 
+  <%= link_to 'Create Blog', new_blog_path if logged_in?(:site_admin) || logged_in?(:user) && current_user.try(:name) != "Guest User"%>
+  
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
@@ -25,4 +27,4 @@
       <%= render 'shared/blog_sidebar' %>
   </div>
 </main>
-<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
+
