@@ -32,7 +32,7 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   def new
     if logged_in?(:user) && current_user.try(:name) != "Guest User"
-      @blog = Blog.new
+      @blog = current_user.blogs.new
     else
       redirect_to root_path, notice: "You are not authorized to access this page"
     end
@@ -46,7 +46,7 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.new(blog_params)
 
     respond_to do |format|
       if @blog.save
@@ -79,7 +79,7 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1.json
   def destroy
     authorize @blog
-    
+
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
@@ -106,7 +106,7 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :body, :topic_id, :picture, :status)
+      params.require(:blog).permit(:title, :body, :topic_id, :picture, :status, :user_id )
     end
 
     def set_sidebar_topics

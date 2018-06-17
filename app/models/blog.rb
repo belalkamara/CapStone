@@ -14,13 +14,6 @@ class Blog < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  after_initialize :set_defaults
-
-  def set_defaults
-    self.topic_id ||= Topic.last.id
-    self.user_id ||= User.last.id
-  end
-
   def self.recent
     order("created_at DESC")
   end
