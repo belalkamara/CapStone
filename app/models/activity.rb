@@ -26,12 +26,8 @@ class Activity < ApplicationRecord
      self.update_column(:status, 1) if Date.today >= self.start_date
    end
 
-  after_initialize :set_defaults
   after_update :set_status, :event_days
 
-  def set_defaults
-    self.user_id ||= User.last.id
-  end
 
   def event_days
     Integer(self.end_date - closer_to_end_date)

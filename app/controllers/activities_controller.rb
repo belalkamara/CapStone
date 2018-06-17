@@ -27,14 +27,14 @@ class ActivitiesController < ApplicationController
 
   def new
     if logged_in?(:user) && current_user.try(:name) != "Guest User"
-      @activity_events = Activity.new
+      @activity_events = current_user.activities.new
     else
       redirect_to root_path, notice: "You are not authorized to access this page"
     end
   end
 
   def create
-    @activity_events = Activity.new(activity_params)
+    @activity_events = current_user.activities.new(activity_params)
 
     respond_to do |format|
       if @activity_events.save!
@@ -111,6 +111,7 @@ class ActivitiesController < ApplicationController
                                      :days,
                                      :end_date,
                                      :start_date,
+                                     :user_id,
                                      :type_id
                                      )
   end
