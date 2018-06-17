@@ -8,7 +8,9 @@
           <li><small class="text-muted"><strong>Days:</strong> <%= activity_event.days%></small></li>
           <li><small class="text-muted"><strong>Start Date:</strong><%= activity_event.start_date %></small></li>
           <li><small class="text-muted"><strong>Miles:</strong><%= activity_event.miles %></small></li>    
+          
           <%= link_to 'Destroy', activity_event, method: :delete, data: { confirm: 'Are you sure?' } %>
+
         </ul>   
         <div class="actions">
           <%= submit_tag 'Join', name: 'join_event', class: "btn btn-sm btn-success " %>

@@ -48,9 +48,12 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    authorize @activity_events
   end
 
   def update
+    authorize @activity_events
+
     @activity_events.event_to_days
 
     respond_to do |format|
@@ -71,6 +74,8 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
+    authorize @activity_events
+    
     @activity_events.destroy
     respond_to do |format|
       format.html { redirect_to activities_url, notice: 'Activity was successfully Deleted.' }
@@ -105,8 +110,7 @@ class ActivitiesController < ApplicationController
                                      :image, 
                                      :days,
                                      :end_date,
-                                     :start_date, 
-                                     :user_id,
+                                     :start_date,
                                      :type_id
                                      )
   end
