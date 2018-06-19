@@ -3,7 +3,7 @@ require "administrate/base_dashboard"
 class ActivityDashboard < Administrate::BaseDashboard
  
   ATTRIBUTE_TYPES = {
-    types: Field::HasMany.with_options(searchable: false),
+    type: Field::BelongsTo.with_options(searchable: false),
     user: Field::BelongsTo.with_options(searchable: false),
     id: Field::Number.with_options(searchable: false),
     title: Field::String.with_options(searchable: true, seachable_field: 'title'),
@@ -19,6 +19,7 @@ class ActivityDashboard < Administrate::BaseDashboard
   }.freeze
 
   COLLECTION_ATTRIBUTES = [
+    :type,
     :user,
     :id,
     :title,
@@ -26,7 +27,7 @@ class ActivityDashboard < Administrate::BaseDashboard
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
-    :types,
+    :type,
     :user,
     :id,
     :title,
@@ -42,7 +43,7 @@ class ActivityDashboard < Administrate::BaseDashboard
   ].freeze
 
   FORM_ATTRIBUTES = [
-    :types,
+    :type,
     :user,
     :title,
     :miles,
