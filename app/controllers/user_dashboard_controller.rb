@@ -1,4 +1,5 @@
 class UserDashboardController < ApplicationController
+  layout "user_dashboard"
 
   def index
     @user_draft_blogs = Blog.draft.blogs_by current_user

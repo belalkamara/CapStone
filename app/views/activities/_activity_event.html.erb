@@ -5,10 +5,11 @@
       <p class="card-text"><strong><%= link_to activity_event.title.truncate_words(6), activity_show_path(activity_event) %></strong></p>
       <div class="d-flex justify-content-between align-items-center">
         <ul class="list-unstyled mb-0">
-          <li><small class="text-muted"><strong>Days:</strong> <%= activity_event.days%></small></li>
-          <li><small class="text-muted"><strong>Start Date:</strong><%= activity_event.start_date %></small></li>
-          <li><small class="text-muted"><strong>Miles:</strong><%= activity_event.miles %></small></li>    
-          
+          <li><small class="text-muted"><strong>Days: </strong> <%= activity_event.days%></small></li>
+          <li><small class="text-muted"><strong>Start Date: </strong><%= activity_event.start_date %></small></li>
+          <li><small class="text-muted"><strong>Miles: </strong><%= activity_event.miles %></small></li>    
+          <li><small class="text-muted"><strong>Status: </strong><%= activity_event.status %></small></li> 
+
           <%= link_to 'Destroy', activity_event, method: :delete, data: { confirm: 'Are you sure?' } %>
 
         </ul>   

@@ -56,7 +56,7 @@ end
     description: "We need to run 100 miles in 20 days.",
     miles: "100",
     image: "http://via.placeholder.com/300x200",
-    start_date: Date.new(2018, 04, 15),
+    start_date: Date.new(2018, 07, 15),
     end_date: Date.new(2018, 10, 30),
     user_id: User.last.id,
     type_id: Type.last.id

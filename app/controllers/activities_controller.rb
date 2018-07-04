@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
   before_action :set_sidebar_types, except: [:update, :create, :destroy, :toggle_status]
+
   require 'date'
   layout "activity"
   # access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
@@ -54,8 +55,6 @@ class ActivitiesController < ApplicationController
   def update
     authorize @activity_events
 
-    @activity_events.event_to_days
-
     respond_to do |format|
       if @activity_events.update(activity_params)
         format.html { redirect_to activities_path, notice: 'Your activity was successfully updated.' }
@@ -86,20 +85,17 @@ class ActivitiesController < ApplicationController
   def toggle_status
     if @activity_events.draft?
       @activity_events.live!
-    else @activity_events.live?
+    elsif @activity_events.live?
       @activity_events.draft!
     end
 
-    if @activity_events.days.nil? || @activity_events.days == 0
+    if @activity_events.days.nil? || @activity_events.days <= 0
       @activity_events.ended!
     end
       
     redirect_to activities_url, notice: "Your activity status has been updated."
   end
 
-
-  def join_event
-  end
 
   private
 
@@ -109,6 +105,7 @@ class ActivitiesController < ApplicationController
                                      :miles, 
                                      :image, 
                                      :days,
+                                     :status,
                                      :end_date,
                                      :start_date,
                                      :user_id,
@@ -123,4 +120,13 @@ class ActivitiesController < ApplicationController
   def set_sidebar_types
     @sidebar_types  = Type.with_activities
   end
+
+
+
+  def set_status
+    self.update_attribute(:status, 2) if self.days == 0
+
+    self.update_attribute(:status, 1) if Date.today >= self.start_date
+  end
+
 end
