@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
-  before_action :set_sidebar_types, except: [:update, :create, :destroy, :toggle_status]
+  before_action :set_activity_item, only: [:edit, :update, :destroy, :show]
+  before_action :set_sidebar_types, except: [:update, :create, :destroy]
 
   require 'date'
   layout "activity"
@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
     if logged_in?(:site_admin)
       @activity_events = Activity.recent.page(params[:page]).per(9).by_position
     else
-      @activity_events = Activity.live.recent.page(params[:page]).per(9).by_position || @activity_events = @type.activities.draft.recent.page(params[:page]).per(9).by_position
+      @activity_events = Activity.live.recent.page(params[:page]).per(9).by_position || @activity_events = Activity.draft.recent.page(params[:page]).per(9).by_position
     end
   end
 
@@ -82,19 +82,19 @@ class ActivitiesController < ApplicationController
     end
   end 
 
-  def toggle_status
-    if @activity_events.draft?
-      @activity_events.live!
-    elsif @activity_events.live?
-      @activity_events.draft!
-    end
+  # def toggle_status
+  #   if @activity_events.draft?
+  #     @activity_events.live!
+  #   elsif @activity_events.live?
+  #     @activity_events.draft!
+  #   end
 
-    if @activity_events.days.nil? || @activity_events.days <= 0
-      @activity_events.ended!
-    end
+  #   if @activity_events.days.nil? || @activity_events.days <= 0
+  #     @activity_events.ended!
+  #   end
       
-    redirect_to activities_url, notice: "Your activity status has been updated."
-  end
+  #   redirect_to activities_url, notice: "Your activity status has been updated."
+  # end
 
 
   private
@@ -118,14 +118,6 @@ class ActivitiesController < ApplicationController
 
   def set_sidebar_types
     @sidebar_types  = Type.with_activities
-  end
-
-
-
-  def set_status
-    self.update_attribute(:status, 2) if self.days == 0
-
-    self.update_attribute(:status, 1) if Date.today >= self.start_date
   end
 
 end

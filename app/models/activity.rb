@@ -27,35 +27,4 @@ class Activity < ApplicationRecord
   def self.recent
     order("created_at DESC")
   end
-
-
-  # after_save :event_to_days
-  # after_save :set_status
-
-  # def set_status
-  #    self.update_column(:status, 2) if self.days == 0
-
-  #    self.update_column(:status, 1) if Date.today >= self.start_date
-  # end
-
-  # def event_days
-  #   Integer(self.end_date - closer_to_end_date)
-  # end
-
-  # def closer_to_end_date
-  #   Activity.all.each do |act|
-  #     if Date.today >= act.start_date
-  #       Date.today
-  #     elsif act.start_date > Date.today
-  #       act.start_date
-  #     end
-  #   end
-  # end
-
-  # def event_to_days
-  #   Activity.all.each do |act|
-  #     act.update_attributes(days: act.event_days)
-  #   end
-  # end
-
 end

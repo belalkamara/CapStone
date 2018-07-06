@@ -30,9 +30,11 @@
     <div class="card-body">
       <h5 class="card-title">Description:</h5>
       <p class="card-text"><%= @activity_events.description %></p>
+      <% if current_user.try(:role) == :site_admin || current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
       <div class="btn-group">
         <button type="button" class="btn btn-success">Join</button>
       </div>
+      <% end %>
     </div>
     <div class="card-footer text-muted">
       <div class="left">
