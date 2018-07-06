@@ -52,7 +52,7 @@ end
 
 1.times do |x|
   Activity.create!(
-    title: "Week #{x}",
+    title: "Didn't start yet",
     description: "We need to run 100 miles in 20 days.",
     miles: "100",
     image: "http://via.placeholder.com/300x200",
@@ -62,4 +62,17 @@ end
     type_id: Type.last.id
   )
 end
-puts "7 activities posts"
+
+1.times do |x|
+  Activity.create!(
+    title: "Ended Event",
+    description: "We need to run 100 miles in 20 days.",
+    miles: "100",
+    image: "http://via.placeholder.com/300x200",
+    start_date: Date.new(2018, 06, 01),
+    end_date: Date.new(2018, 07, 03),
+    user_id: User.last.id,
+    type_id: Type.last.id
+  )
+end
+puts "8 activities posts"
