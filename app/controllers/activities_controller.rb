@@ -82,20 +82,6 @@ class ActivitiesController < ApplicationController
     end
   end 
 
-  # def toggle_status
-  #   if @activity_events.draft?
-  #     @activity_events.live!
-  #   elsif @activity_events.live?
-  #     @activity_events.draft!
-  #   end
-
-  #   if @activity_events.days.nil? || @activity_events.days <= 0
-  #     @activity_events.ended!
-  #   end
-      
-  #   redirect_to activities_url, notice: "Your activity status has been updated."
-  # end
-
 
   private
 

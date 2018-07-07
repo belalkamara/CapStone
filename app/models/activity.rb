@@ -27,4 +27,19 @@ class Activity < ApplicationRecord
   def self.recent
     order("created_at DESC")
   end
+
+  after_create :toggle_status
+
+  def toggle_status
+    if self.end_date < Date.today
+      self.update(status: 2)
+    elsif self.start_date > Date.today
+      self.update(status: 0)
+    else self.start_date <= Date.today
+      self.update(status: 1)
+    end
+  end
+
 end
+
+  
