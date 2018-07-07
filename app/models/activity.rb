@@ -12,12 +12,18 @@ class Activity < ApplicationRecord
 
   scope :activities_by, ->(user) { where(user_id: user.id) }
 
+  scope :all_except, ->(activity) { where.not(status: 2) }
+
   def self.draft
     where(status: 'draft')
   end
 
   def self.live
     where(status: 'live')
+  end
+
+  def self.ended
+    where(status: 'ended')
   end
 
   def self.by_position

@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
     if logged_in?(:site_admin)
       @activity_events = Activity.recent.page(params[:page]).per(9).by_position
     else
-      @activity_events = Activity.live.recent.page(params[:page]).per(9).by_position || @activity_events = Activity.draft.recent.page(params[:page]).per(9).by_position
+      @activity_events = Activity.all_except(Activity.ended).recent.page(params[:page]).per(9).by_position
     end
   end
 
