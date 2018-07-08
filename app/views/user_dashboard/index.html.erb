@@ -3,29 +3,38 @@
 
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">My Dashboard</li>
       </ol>
-      
 
-      <div>
-        <%= render @user_published_blogs %>
-        <%= render @user_draft_blogs %>
+      <div class="container">
+        <%= link_to 'Create Blog', new_blog_path, class: 'btn btn-primary' %>
+        <%= link_to 'Create Activity', new_activity_path, class: 'btn btn-primary' %>
+        <%= link_to "Edit Account", edit_user_registration_path, class: 'btn btn-primary' %>
       </div>
 
-      <div>
-        <%= render @live_activities %>
-
-        <%= render @ended_activities %>
-
-        <%= render @draft_activities %>
+      <div class="album py-5">
+        <div class="container">
+          <h3 class="pb-3 mb-4 font-italic border-bottom">
+            All Your Activity Events
+          </h3>
+          <div class="row">            
+            <%= render partial: 'draft_act', collection: @draft_acts %>
+            <%= render partial: 'live_act', collection: @live_acts %>
+            <%= render partial: 'ended_act', collection: @ended_acts %>
+          </div>
+          <h3 class="pb-3 mb-4 font-italic border-bottom">
+            All Your Blogs
+          </h3>
+          <div class="row">
+            <%= render partial: 'draft_blog', collection: @draft_blogs %>
+            <%= render partial: 'pub_blog', collection: @pub_blogs %>
+          </div>
+        </div>  
       </div>
-      
     </div>
   </div>
-
 </div>

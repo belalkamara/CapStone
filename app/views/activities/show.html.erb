@@ -1,5 +1,5 @@
 <header class="masthead">
-  <div class="overlay"><!-- put the image here put figure out how to make the quality high and fit the masthead --></div>
+  <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
@@ -151,12 +151,6 @@
     </div>
   </div>
 </div>
-
-<% if logged_in?(:user) %>
-  <div class="col-md-12">
-   <%= link_to "Edit Activity", edit_activity_path(@activity_events), class: 'btn btn-warning' %>
-  </div>
-<% end %>
 
 
 

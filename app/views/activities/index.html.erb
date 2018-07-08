@@ -23,10 +23,9 @@
   <div class="container">
     <div class="row">
 
-      <%= render partial: 'activity_event', collection: @activity_events %>
-
-      <%= paginate @activity_events %>
+      <%= render partial: 'activity_event', collection: @activity_events %>   
     </div>
+    <%= paginate @activity_events %>
   </div>
 </div>
 

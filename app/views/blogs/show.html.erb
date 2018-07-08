@@ -45,14 +45,9 @@
     </div>
      
     <div class="pull-left">
-    <%= link_to 'Back', blogs_path %>
-
-    <% if logged_in?(:user) %>
-      / <%= link_to fa_icon('pencil-square-o'), edit_blog_path(@blog) %> 
-      / <%= link_to fa_icon('trash'), @blog, method: :delete, data: { confirm: 'Are you sure you want to delete this post' } if logged_in?(:user) %>
-      / Blog status: <%= @blog.status %>
+      <%= link_to 'Back', blogs_path %>
     </div>
-    <% end %>
+
 
   </div>
 </article>  

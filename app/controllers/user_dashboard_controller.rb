@@ -2,36 +2,20 @@ class UserDashboardController < ApplicationController
   layout "user_dashboard"
 
   def index
-    @user_draft_blogs = Blog.draft.blogs_by current_user
+    @draft_blogs = Blog.draft.blogs_by current_user
 
-    @user_published_blogs = Blog.published.blogs_by current_user
+    @pub_blogs = Blog.published.blogs_by current_user
 
-    @draft_activities = Activity.draft.activities_by current_user   
+    @draft_acts = Activity.draft.activities_by current_user   
 
-    @ended_activities = Activity.ended.activities_by current_user  
+    @ended_acts = Activity.ended.activities_by current_user  
 
-    @live_activities = Activity.live.activities_by current_user
+    @live_acts = Activity.live.activities_by current_user
   end
 
   def sort
-    
+     
   end
-
-  # def edit
-    
-  # end
-
-  # def update
-  #   @user_miles = User.find(params[:id])
-
-  #   respond_to do |format|
-  #     if @user_miles.update_attributes(params[:miles])
-  #       redirect_to "/user-dashboard"
-  #     else
-  #       render "edit"
-  #     end
-  #   end
-  # end
 
   def profile
     
