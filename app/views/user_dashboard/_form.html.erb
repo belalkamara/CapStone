@@ -1,17 +1,17 @@
-<%= form_tag(user_dashboard_path) do %>
-  <div class="form-group">
-    <%= label_tag 'user[day]', 'Day' %>
-    <%= date_field_tag 'user[day]', User.day, class: 'form-control' %>
-  </div
+<%= form_with(model: @user, local: true) do |form| %>
+  <h3 class="pb-3 mb-4 font-italic border-bottom">
+    Enter Your Miles
+  </h3>
 
   <div class="form-group">
-    <%= label_tag 'user[miles]', 'Miles' %>
-    <%= number_field_tag 'user[miles]', User.miles, class: 'form-control' %>
+    <%= form.label :day %>
+    <%= form.date_field :day, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= submit_tag 'Save', class: 'btn btn-primary' %>
+    <%= form.label :miles %>
+    <%= form.number_field :miles, class: "form-control" %>
   </div>
+
+  <%= form.submit 'Save', class: 'btn btn-primary btn-block' %>
 <% end %>
-
-<!-- https://rails.devcamp.com/fullstack/guide/difference-between-form_form-form_tag-rails -->

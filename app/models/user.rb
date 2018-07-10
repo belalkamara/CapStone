@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :blogs
   has_many :activities
   has_many :comments, dependent: :destroy
+  has_many :user_logs
 
   def first_name
     self.name.split.first

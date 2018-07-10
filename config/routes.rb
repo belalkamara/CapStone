@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_logs
   resources :types, only: [:index, :show]
 
   resources :topics, only: [:index, :show]
