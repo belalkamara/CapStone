@@ -17,21 +17,10 @@ class UserDashboardController < ApplicationController
      
   end
 
-  def profile
-    
-  end
-
   def active_activities
-    @live_activities = Activity.live.by_position.activities_by current_user
+    @user_logs = UserLog.new
+
+    @user_log = UserLog.all.page(params[:page]).per(6).user_log_by current_user
   end
 
-  private
-
-  def user_params
-      params.require(:user).permit(:email, :name, :miles, :day)
-   end
-
-  def set_user_miles
-    @user_miles = User.find(params[:id])
-  end
 end

@@ -76,3 +76,8 @@ end
   )
 end
 puts "8 activities posts"
+
+1.times do |user_log|
+  UserLog.create!(user_id: User.last.id, miles: 3, day: (Date.today))
+end
+puts "1 user log have been created"

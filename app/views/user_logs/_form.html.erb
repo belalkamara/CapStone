@@ -1,8 +1,7 @@
-<%= form_with(model: @user, local: true) do |form| %>
-  <h3 class="pb-3 mb-4 font-italic border-bottom">
-    Enter Your Miles
-  </h3>
-
+<h3 class="pb-3 mb-4 font-italic border-bottom">
+  Enter Your Miles
+</h3>
+<%= form_for :user_logs, url: user_logs_path do |form| %>
   <div class="form-group">
     <%= form.label :day %>
     <%= form.date_field :day, class: "form-control" %>
@@ -15,3 +14,7 @@
 
   <%= form.submit 'Save', class: 'btn btn-primary btn-block' %>
 <% end %>
+
+
+
+
