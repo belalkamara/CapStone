@@ -32,7 +32,9 @@
       <p class="card-text"><%= @activity_events.description %></p>
       <% if current_user.try(:role) == :site_admin || current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
       <div class="btn-group">
-        <button type="button" class="btn btn-success">Join</button>
+        <%= form_for @act_join, url: '/user-activities' do |f| %>
+          <%= f.submit 'Join', class: 'btn btn-success' %>
+        <% end %>
       </div>
       <% end %>
     </div>
@@ -149,6 +151,7 @@
         Event Type: <%= @activity_events.type.title %>
       </div>
     </div>
+    <%= render @activity_events.act_joins %>
   </div>
 </div>
 

@@ -67,6 +67,9 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @activity_events = Activity.includes(:act_joins).find(params[:id])
+    @act_join = ActJoin.new
+    
     @page_title = @activity_events.title
 
     @user_activities = Activity.activities_by current_user
