@@ -32,120 +32,13 @@
       <p class="card-text"><%= @activity_events.description %></p>
       <% if current_user.try(:role) == :site_admin || current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
       <div class="btn-group">
-        <%= form_for @act_join, url: '/user-activities' do |f| %>
-          <%= f.submit 'Join', class: 'btn btn-success' %>
-        <% end %>
+        <%= render 'act_joins/act_join_form' %>
       </div>
       <% end %>
     </div>
     <div class="card-footer text-muted">
       <div class="left">
-        <div id="dueDate-counter">
-          <% if @activity_events.end_date < Date.today %>
-            <% @activity_events.update(status: 2) %>
-              <table>
-                <tr>
-                  <td><strong>Ended</strong></td><td></td>
-                </tr>            
-              </table>
-
-
-          <% elsif @activity_events.start_date > Date.today %>
-            <% @activity_events.update(status: 0) %>
-              <table>
-                <tr>
-                  <td><strong>Until</strong></td><td><strong>Start:</strong></td>
-                  <td><i>Days:</i></td><td id="days"></td><td>|</td>
-                  <td><i>Hrs:</i></td><td id="hours"></td><td>|</td>
-                  <td><i>Mins:</i></td><td id="minutes"></td><td>|</td>
-                  <td><i>Secs:</i></td><td id="seconds"></td>
-                </tr>            
-              </table> 
-              <script type="text/javascript">
-                function countdown() {
-                  var now = new Date();
-                  var eventDate = new Date("<%= @activity_events.start_date %>");
-                  var currentTime = now.getTime();
-                  var eventTime = eventDate.getTime();
-
-                  var remTime = eventTime - currentTime;
-
-                  var s = Math.floor(remTime / 1000);
-                  var m = Math.floor(s / 60);
-                  var h = Math.floor(m / 60);
-                  var d = Math.floor(h / 24);
-
-                  h %= 24;
-                  m %= 60;
-                  s %= 60;
-
-                  h = (h < 10) ? "0" + h : h;
-                  m = (m < 10) ? "0" + m : m;
-                  s = (s < 10) ? "0" + s : s;
-
-                  document.getElementById("days").textContent = d;
-                  document.getElementById("days").innerText = d;
-
-                  document.getElementById("hours").textContent = h;
-                  document.getElementById("minutes").textContent = m;
-                  document.getElementById("seconds").textContent = s;
-
-                  setTimeout(countdown, 1000);
-                }
-
-                countdown();
-              </script>
-            
-
-            <% else @activity_events.start_date <= Date.today %>
-              <% @activity_events.update(status: 1) %>
-
-              <table>
-                <tr>
-                  <td><strong>Time</strong></td><td><strong>Remaining:</strong></td>
-                  <td><i>Days:</i></td><td id="days"></td><td>|</td>
-                  <td><i>Hrs:</i></td><td id="hours"></td><td>|</td>
-                  <td><i>Mins:</i></td><td id="minutes"></td><td>|</td>
-                  <td><i>Secs:</i></td><td id="seconds"></td>
-                </tr>            
-              </table> 
-              <script type="text/javascript">
-                function countdown() {
-                  var now = new Date();
-                  var eventDate = new Date("<%= @activity_events.end_date %>");
-                  var currentTime = now.getTime();
-                  var eventTime = eventDate.getTime();
-
-                  var remTime = eventTime - currentTime;
-
-                  var s = Math.floor(remTime / 1000);
-                  var m = Math.floor(s / 60);
-                  var h = Math.floor(m / 60);
-                  var d = Math.floor(h / 24);
-
-                  h %= 24;
-                  m %= 60;
-                  s %= 60;
-
-                  h = (h < 10) ? "0" + h : h;
-                  m = (m < 10) ? "0" + m : m;
-                  s = (s < 10) ? "0" + s : s;
-
-                  document.getElementById("days").textContent = d;
-                  document.getElementById("days").innerText = d;
-
-                  document.getElementById("hours").textContent = h;
-                  document.getElementById("minutes").textContent = m;
-                  document.getElementById("seconds").textContent = s;
-
-                  setTimeout(countdown, 1000);
-                }
-
-                countdown();
-              </script>
-          <% end %>
-                      
-        </div>
+        <%= render 'countdown' %>
       </div>
       <div class="right">
         Event Type: <%= @activity_events.type.title %>
