@@ -3,6 +3,7 @@ require 'date'
 class Activity < ApplicationRecord
   belongs_to :type
   belongs_to :user
+  has_many :act_joins, dependent: :destroy
 
   enum status: { draft: 0, live: 1, ended: 2 }
 

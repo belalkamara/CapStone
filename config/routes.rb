@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :act_joins
   resources :user_logs
   resources :types, only: [:index, :show]
 
