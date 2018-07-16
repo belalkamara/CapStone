@@ -46,11 +46,20 @@
         Event Type: <%= @activity_events.type.title %>
       </div>
     </div>
-    <div id="act_joins" data-activity-id="<%= @activity_events.id %>">
-      <%= render @activity_events.act_joins %>
-    </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="card text-center">
+    <div class="col-md-12">
+      <h3 class="pb-3 mb-4 font-italic border-bottom">
+        Joined Users:
+      </h3>
+      <%= render @activity_events.act_joins %>
+    </div>   
+  </div>
+</div>
+
 
 
 
