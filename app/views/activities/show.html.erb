@@ -30,11 +30,13 @@
     <div class="card-body">
       <h5 class="card-title">Description:</h5>
       <p class="card-text"><%= @activity_events.description %></p>
+      
       <% if current_user.try(:role) == :site_admin || current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
-      <div class="btn-group">
-        <%= render 'act_joins/act_join_form' %>
-      </div>
+        <div class="btn-group">
+          <%= render 'act_joins/act_join_form' %>
+        </div>
       <% end %>
+
     </div>
     <div class="card-footer text-muted">
       <div class="left">
@@ -44,7 +46,9 @@
         Event Type: <%= @activity_events.type.title %>
       </div>
     </div>
-    <%= render @activity_events.act_joins %>
+    <div id="act_joins" data-activity-id="<%= @activity_events.id %>">
+      <%= render @activity_events.act_joins %>
+    </div>
   </div>
 </div>
 

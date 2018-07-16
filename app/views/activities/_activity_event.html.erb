@@ -10,11 +10,6 @@
           <li><small class="text-muted"><strong>Status: </strong><%= activity_event.status %></small></li> 
 
         </ul>   
-        <% if current_user.try(:role) == :site_admin || current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
-          <div class="actions">
-            <%= submit_tag 'Join', name: 'join_event', class: "btn btn-sm btn-success " %>
-          </div>   
-        <% end %>
       </div>
     </div>
   </div>
