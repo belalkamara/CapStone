@@ -13,11 +13,15 @@
   </div>  
 </header>
 
-  <%= link_to 'Create Blog', new_blog_path if logged_in?(:site_admin) || logged_in?(:user) && current_user.try(:name) != "Guest User"%>
+<div class="container">
+  <%= link_to 'Create Blog', new_blog_path , class: 'btn btn-primary' if logged_in?(:site_admin) || logged_in?(:user) && current_user.try(:name) != "Guest User"%>
+</div>
+<br>
   
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
+    
       <h3 class="pb-3 mb-4 font-italic border-bottom">
         All Blogs
       </h3>

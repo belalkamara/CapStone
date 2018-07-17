@@ -5,7 +5,7 @@ class UserLog < ApplicationRecord
 
   scope :user_log_by, ->(user) { where(user_id: user.id) }
 
-  def self.recent_day
+  def self.miles
     order("miles DESC")
   end
 
