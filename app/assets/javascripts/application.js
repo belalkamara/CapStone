@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap-sprockets
 //= require gritter
 //= require rails-ujs
 //= require cable
@@ -22,3 +21,4 @@
 //= require cocoon
 //= require_tree .
 //= require bootstrap
+//= require bootstrap-sprockets
