@@ -1,0 +1,17 @@
+<div class="col-md-3 bttm">
+  <div class="card-body bord">
+    <%= image_tag blog_img(draft_blog.picture, 'picture'), height:'195px', width:'190px', class: "center-block" %>
+    <p class="card-text"><strong><%= link_to draft_blog.title.truncate_words(4), draft_blog %></strong></p>
+    <div class="d-flex justify-content-between align-items-center">
+      <ul class="list-unstyled mb-0">
+      <li><small class="text-muted"><strong>Published </strong><%= distance_of_time_in_words(draft_blog.created_at, Time.now) %> ago</small></li>
+      <li><small class="text-muted"><strong>Status: </strong><%= draft_blog.status %></small></li>
+
+      <%= link_to 'Destroy', draft_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+
+      <%= link_to "Edit Blog", edit_blog_path(draft_blog), class: 'btn btn-warning btn-sm' %>
+      </ul>
+    </div>
+  </div>
+</div>
+

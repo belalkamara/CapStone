@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <h1>Blog Page</h1>
+            <span class="subheading">Join in on the conversation!</span>
           </div>
         </div>
       </div>
@@ -13,9 +13,15 @@
   </div>  
 </header>
 
+<div class="container">
+  <%= link_to 'Create Blog', new_blog_path , class: 'btn btn-primary' if logged_in?(:site_admin) || logged_in?(:user) && current_user.try(:name) != "Guest User"%>
+</div>
+<br>
+  
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
+    
       <h3 class="pb-3 mb-4 font-italic border-bottom">
         All Blogs
       </h3>
@@ -25,4 +31,4 @@
       <%= render 'shared/blog_sidebar' %>
   </div>
 </main>
-<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
+

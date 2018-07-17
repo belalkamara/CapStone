@@ -1,11 +1,17 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity_item, only: [:edit, :update, :destroy, :show, :toggle_status]
+  before_action :set_activity_item, only: [:edit, :update, :destroy, :show]
+  before_action :set_sidebar_types, except: [:update, :create, :destroy]
+
   require 'date'
   layout "activity"
   # access all: [:show, :index], user: {except: [:destroy, :edit]}, site_admin: :all
   
   def index
-    @activity_events = Activity.page(params[:page]).per(9).by_position
+    if logged_in?(:site_admin)
+      @activity_events = Activity.recent.page(params[:page]).per(9).by_position
+    else
+      @activity_events = Activity.all_except(Activity.ended).recent.page(params[:page]).per(9).by_position
+    end
   end
 
   def sort
@@ -21,11 +27,15 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity_events = Activity.new
+    if logged_in?(:user) && current_user.try(:name) != "Guest User"
+      @activity_events = current_user.activities.new
+    else
+      redirect_to root_path, notice: "You are not authorized to access this page"
+    end
   end
 
   def create
-    @activity_events = Activity.new(activity_params)
+    @activity_events = current_user.activities.new(activity_params)
 
     respond_to do |format|
       if @activity_events.save!
@@ -39,10 +49,11 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    authorize @activity_events
   end
 
   def update
-    @activity_events.event_to_days
+    authorize @activity_events
 
     respond_to do |format|
       if @activity_events.update(activity_params)
@@ -56,12 +67,16 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @act_joins = ActJoin.new
+    
     @page_title = @activity_events.title
 
     @user_activities = Activity.activities_by current_user
   end
 
   def destroy
+    authorize @activity_events
+    
     @activity_events.destroy
     respond_to do |format|
       format.html { redirect_to activities_url, notice: 'Activity was successfully Deleted.' }
@@ -69,23 +84,6 @@ class ActivitiesController < ApplicationController
     end
   end 
 
-  def toggle_status
-    if @activity_events.draft?
-      @activity_events.live!
-    else @activity_events.live?
-      @activity_events.draft!
-    end
-
-    if @activity_events.days.nil? || @activity_events.days == 0
-      @activity_events.ended!
-    end
-      
-    redirect_to activities_url, notice: "Your activity status has been updated."
-  end
-
-
-  def join_event
-  end
 
   private
 
@@ -93,16 +91,21 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(:title, 
                                      :description, 
                                      :miles, 
-                                     :image, 
-                                     :days,
+                                     :image,
+                                     :status,
                                      :end_date,
-                                     :start_date, 
+                                     :start_date,
                                      :user_id,
-                                     types_attributes: [:id, :name, :_destroy]
+                                     :type_id
                                      )
   end
 
   def set_activity_item
     @activity_events = Activity.find(params[:id])
   end
+
+  def set_sidebar_types
+    @sidebar_types  = Type.with_activities
+  end
+
 end

@@ -1,5 +1,5 @@
 <header class="masthead">
-  <div class="overlay"><!-- put the image here put figure out how to make the quality high and fit the masthead --></div>
+  <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
@@ -18,42 +18,48 @@
   <div class="card text-center">
     <div class="card-header">
       <div class="left">
-        Miles:<%= @activity_events.miles %>
+        Miles: <%= @activity_events.miles %>
       </div>
       <div class="right">
-        Start Date:<%= @activity_events.start_date %>  
+        Start Date: <%= @activity_events.start_date %>  
       </div>
       <div class="right">
-        End Date:<%= @activity_events.end_date %>
+        End Date: <%= @activity_events.end_date %>
        </div> 
     </div>
     <div class="card-body">
       <h5 class="card-title">Description:</h5>
       <p class="card-text"><%= @activity_events.description %></p>
-      <div class="btn-group">
-        <button type="button" class="btn btn-success">Join</button>
-      </div>
+      
+      <% if current_user.try(:role) == :site_admin || current_user.try(:role) == :user && current_user.try(:name) != "Guest User" %>
+        <div class="btn-group">
+          <%= render 'act_joins/act_join_form' %>
+        </div>
+      <% end %>
+
     </div>
     <div class="card-footer text-muted">
       <div class="left">
-        Days Remaining:<%= @activity_events.days %>
+        <%= render 'countdown' %>
       </div>
       <div class="right">
-        Event Type: <% @activity_events.types.each do |x| %>
-                      <%= x.name %>
-                    <% end %>
+        Event Type: <%= @activity_events.type.title %>
       </div>
     </div>
   </div>
 </div>
 
-<% if logged_in?(:user) %>
-  <div class="col-md-12">
-   <%= link_to "Edit Activity", edit_activity_path(@activity_events), class: 'btn btn-warning' %>
+<div class="container">
+  <div class="card text-center">
+    <div class="col-md-12">
+      <h3 class="pb-3 mb-4 font-italic border-bottom">
+        Joined Users:
+      </h3>
+      <%= render @activity_events.act_joins %>
+    </div>   
   </div>
-<% end %>
+</div>
 
 
-<!-- Have the Start date be the publish date -->
 
-<!-- And have the Days remaining go down to 0 then go to the ended state -->
+

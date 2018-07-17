@@ -40,13 +40,15 @@
 
       <h3>Activity Type</h3>
       <div>
-        <%= form.fields_for :types do |type_form| %>
-          <%= render 'type_fields', f: type_form %>
-        <% end %>
-
-        <div>
-          <%= link_to_add_association 'Add Type', form, :types %>
-        </div>
+        <%= form.label :type_id %>
+        <%= form.collection_select(:type_id, Type.all, :id, :title, 
+                                    {
+                                      selected: @activity_events.type_id,
+                                      include_blank: true
+                                    },
+                                     class: 'form-control'
+                                  )
+        %>
       </div>
 
       

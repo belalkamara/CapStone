@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 
   def ranking
     @activity_events = Activity.all
+    @user_log = UserLog.miles.page(params[:page]).per(6)
   end
 
   def user_dashboard

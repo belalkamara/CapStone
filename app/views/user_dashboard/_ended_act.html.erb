@@ -1,0 +1,18 @@
+<div class="col-md-3 bttm">
+  <div class="card-body bord">
+    <%= image_tag act_img(ended_act.image, 'image'), height:'195px', width:'190px' %>
+    <p class="card-text"><strong><%= link_to ended_act.title.truncate_words(4), activity_show_path(ended_act) %></strong></p>
+    <div class="d-flex justify-content-between align-items-center">
+      <ul class="list-unstyled mb-0">
+        <li><small class="text-muted"><strong>Start Date: </strong><%= ended_act.start_date %></small></li>
+        <li><small class="text-muted"><strong>Miles: </strong><%= ended_act.miles %></small></li>    
+        <li><small class="text-muted"><strong>Status: </strong><%= ended_act.status %></small></li> 
+
+        <%= link_to 'Destroy', ended_act, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+
+        <%= link_to "Edit Activity", edit_activity_path(ended_act), class: 'btn btn-warning btn-sm' %>
+      </ul>   
+    </div>
+  </div>
+</div>
+

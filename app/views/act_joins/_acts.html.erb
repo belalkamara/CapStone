@@ -1,0 +1,24 @@
+<div class="album py-5">
+  <div class="container">
+    <h3 class="pb-3 mb-4 font-italic border-bottom">
+      All Your Joined Events
+    </h3>
+    <div class="row">
+      <% @act_join.each do |act| %>
+        <div class="col-md-3 bttm">
+          <div class="card-body bord">
+            <%= image_tag act_img(act.activity.image, 'image'), height:'195px', width:'190px' %>
+            <p class="card-text"><strong><%= link_to act.activity.title.truncate_words(4), activity_show_path(act) %></strong></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <ul class="list-unstyled mb-0">
+                <li><small class="text-muted"><strong>Start Date: </strong><%= act.activity.start_date %></small></li>
+                <li><small class="text-muted"><strong>Miles: </strong><%= act.activity.miles %></small></li>    
+                <li><small class="text-muted"><strong>Status: </strong><%= act.activity.status %></small></li>
+              </ul>   
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

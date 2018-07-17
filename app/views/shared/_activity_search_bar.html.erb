@@ -1,13 +1,27 @@
 <div class="container">
-  <nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand">
-      <button class="btn active" > Show all</button>
-      <button class="btn" > Biking</button>
-      <button class="btn" > Running</button>
-    </a>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <i><%= link_to fa_icon('plus-square-o'), new_activity_url if logged_in?(:site_admin) || logged_in?(:user) && current_user.try(:name) != "Guest User"  %></i>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <strong><i class="nav-link">Activity Types:</i></strong>
+        </li>
+        <li class="nav-item">
+          <%= link_to "All Activities", activities_path , class: "nav-link" %>
+        </li>
+        <% @sidebar_types.each do |type| %>
+        <li class="nav-item">
+          <%= link_to type.title, type_path(type), class: "nav-link" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
   </nav>
 </div>
+
+
+
+

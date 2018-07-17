@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1><h1>Hi <%= current_user.first_name %></h1></h1>
+            <h1><h1>Hi <%= current_user.first_name %>,</h1></h1>
             <span class="subheading">Welcome to Race the Day!</span>
           </div>
         </div>
@@ -20,13 +20,13 @@
       <div class="row">
         <div class="col-md-6">
           <h2>About Blog</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          <p>The Blog page is where the community can come together and talk about their run, ask for advice, vent about a bad run, show off what they’ve accomplished, etc. Get started by signing up and join the community. </p>
+          <p><%= link_to "View Blogs", blogs_path, class: 'btn btn-primary btn-xl js-scroll-trigger bg-primary' %></p>
         </div>
         <div class="col-md-6">
           <h2>About Activities</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+          <p>The Activity page is where the community can challenge each other by creating various events such as a Walk, Basic Run, Marathon, Long Run, and even a Hike. You can also join these various events to challenge yourself and others on it. </p>
+          <p><%= link_to "View Activities", activities_path, class: 'btn btn-primary btn-xl js-scroll-trigger bg-primary' %></p>
         </div>
       </div>
     </div> 
@@ -38,7 +38,7 @@
         <div class="col-lg-8 mx-auto text-center">
           <h2 class="section-heading text-white">About Race The Day!</h2>
           <hr class="light my-4">
-          <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+          <p class="text-faded mb-4">Race the day is home to a community of runners, hikers, joggers, walkers, and people who just wants to get out and put one foot after the other. Our goal is to bring an online community of runners together and bring new runners in with the aspect of a little competition with our activity events.</p>
           <%= link_to "Get Started!", new_user_registration_path, class: 'btn btn-light btn-xl js-scroll-trigger' %>
         </div>
       </div>

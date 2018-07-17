@@ -1,0 +1,12 @@
+<%= form_for :act_joins, url: act_joins_path do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :activity_id, :value => @activity_events.id %>
+  <%= f.submit 'Join', class: 'btn btn-success' %>
+<% end %>
+
+
+
+  
+
+
+

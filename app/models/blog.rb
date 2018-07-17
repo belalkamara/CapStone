@@ -5,19 +5,14 @@ class Blog < ApplicationRecord
 
   validates_presence_of :title, :body, :topic_id, :user_id
 
+  mount_uploader :picture, BlogUploader
+
   scope :blogs_by, ->(user) { where(user_id: user.id) }
 
   belongs_to :topic
   belongs_to :user
 
   has_many :comments, dependent: :destroy
-
-  after_initialize :set_defaults
-
-  def set_defaults
-    self.topic_id ||= Topic.last.id
-    self.user_id ||= User.last.id
-  end
 
   def self.recent
     order("created_at DESC")

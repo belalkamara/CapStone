@@ -9,16 +9,14 @@ require 'date'
     roles: "site_admin"
     )
 end
-
 puts "1 User Created"
 
-3.times do |topic|
+1.times do |topic|
   Topic.create!(
-    title: "Topic #{topic}"
+    title: "Misc."
   )
 end
-
-puts "3 Topics Created"
+puts "1 Topics Created"
 
 10.times do |blog|
   Blog.create!(
@@ -29,8 +27,14 @@ puts "3 Topics Created"
     user_id: User.last.id
   )
 end
-
 puts "10 blog posts"
+
+1.times do |type|
+  Type.create!(
+    title: "Marathon"
+  )
+end
+puts "1 Activity types created"
 
 
 6.times do |x|
@@ -41,28 +45,39 @@ puts "10 blog posts"
     image: "http://via.placeholder.com/300x200",
     start_date: Date.new(2018, 06, 17),
     end_date: Date.new(2018, 10, 30),
-    user_id: User.last.id
+    user_id: User.last.id,
+    type_id: Type.last.id
   )
 end
 
 1.times do |x|
   Activity.create!(
-    title: "Week #{x}",
+    title: "Didn't start yet",
     description: "We need to run 100 miles in 20 days.",
     miles: "100",
     image: "http://via.placeholder.com/300x200",
-    start_date: Date.new(2018, 04, 15),
+    start_date: Date.new(2018, 07, 15),
     end_date: Date.new(2018, 10, 30),
-    user_id: User.last.id
+    user_id: User.last.id,
+    type_id: Type.last.id
   )
 end
-
-puts "7 activities posts"
 
 1.times do |x|
-  Activity.last.types.create!(
-    name: "Type #{x}"
+  Activity.create!(
+    title: "Ended Event",
+    description: "We need to run 100 miles in 20 days.",
+    miles: "100",
+    image: "http://via.placeholder.com/300x200",
+    start_date: Date.new(2018, 06, 01),
+    end_date: Date.new(2018, 07, 03),
+    user_id: User.last.id,
+    type_id: Type.last.id
   )
 end
+puts "8 activities posts"
 
-puts "1 Activity types created"
+1.times do |user_log|
+  UserLog.create!(user_id: User.last.id, miles: 3, day: (Date.today))
+end
+puts "1 user log have been created"
