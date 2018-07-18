@@ -15,7 +15,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  config.assets.compile = true
+  config.assets.compile = false
 
   config.log_level = :debug
 
